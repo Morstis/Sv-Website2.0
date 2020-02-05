@@ -5,7 +5,9 @@ const routes: Routes = [
   {
     path: 'nachhilfe',
     loadChildren: () =>
-      import('./nachhilfe/nachhilfe.module').then(module => module.NachhilfeModule)
+      import('./nachhilfe/nachhilfe.module').then(
+        module => module.NachhilfeModule
+      )
   }
 ];
 

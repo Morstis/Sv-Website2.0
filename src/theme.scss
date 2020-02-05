@@ -1,6 +1,6 @@
 /**
 * Generated theme by Material Theme Generator
-* https://material-theme-generator.travetto.io
+* https://materialtheme.arcsine.dev
 */
 
 @import '~@angular/material/theming';
@@ -143,19 +143,19 @@ $mat-dark-theme-background: (
 // Theme Config
 
 body {
-  --primary-color: #285e83;
-  --primary-lighter-color: #bfcfda;
-  --primary-darker-color: #184266;
+  --primary-color: #3385cc;
+  --primary-lighter-color: #c2daf0;
+  --primary-darker-color: #2068b9;
   --text-primary-color: #{$light-primary-text};
   --text-primary-lighter-color: #{$dark-primary-text};
   --text-primary-darker-color: #{$light-primary-text};
 }
 
 $mat-primary: (
-  main: #285e83,
-  lighter: #bfcfda,
-  darker: #184266,
-  200: #285e83,
+  main: #3385cc,
+  lighter: #c2daf0,
+  darker: #2068b9,
+  200: #3385cc,
   // For slide toggle,
     contrast:
     (
@@ -167,23 +167,23 @@ $mat-primary: (
 $theme-primary: mat-palette($mat-primary, main, lighter, darker);
 
 body {
-  --accent-color: #797979;
-  --accent-lighter-color: #d7d7d7;
-  --accent-darker-color: #5c5c5c;
-  --text-accent-color: #{$light-primary-text};
+  --accent-color: #a5980c;
+  --accent-lighter-color: #e4e0b6;
+  --accent-darker-color: #8a7b06;
+  --text-accent-color: #{$dark-primary-text};
   --text-accent-lighter-color: #{$dark-primary-text};
   --text-accent-darker-color: #{$light-primary-text};
 }
 
 $mat-accent: (
-  main: #797979,
-  lighter: #d7d7d7,
-  darker: #5c5c5c,
-  200: #797979,
+  main: #a5980c,
+  lighter: #e4e0b6,
+  darker: #8a7b06,
+  200: #a5980c,
   // For slide toggle,
     contrast:
     (
-      main: $light-primary-text,
+      main: $dark-primary-text,
       lighter: $dark-primary-text,
       darker: $light-primary-text
     )
@@ -218,6 +218,7 @@ $theme: mat-dark-theme($theme-primary, $theme-accent, $theme-warn);
 $altTheme: mat-light-theme($theme-primary, $theme-accent, $theme-warn);
 
 // Theme Init
+
 @include angular-material-theme($theme);
 
 .theme-alternate {
@@ -239,4 +240,39 @@ $altTheme: mat-light-theme($theme-primary, $theme-accent, $theme-warn);
 .mat-standard-chip {
   padding: 0.5em 0.85em;
   min-height: 2.5em;
+}
+
+/* User edited*/
+
+mat-grid-tile {
+  background-color: mat-color($mat-primary, main);
+  cursor: pointer;
+  h1 {
+    color: white;
+  }
+}
+
+mat-form-field.mat-form-field {
+  font-size: 120%;
+}
+
+@mixin noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  // -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+//No Buttons in Number Inputs
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* Firefox */
+input[type='number'] {
+  -moz-appearance: textfield;
 }

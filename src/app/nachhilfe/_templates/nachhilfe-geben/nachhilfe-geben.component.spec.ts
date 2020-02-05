@@ -8,9 +8,8 @@ describe('NachhilfeGebenComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NachhilfeGebenComponent ]
-    })
-    .compileComponents();
+      declarations: [NachhilfeGebenComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

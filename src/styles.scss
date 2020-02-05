@@ -1,14 +1,25 @@
 html,
-body {
+body,
+app-root,
+.app-frame {
+  overflow: auto;
+  margin: 0;
   height: 100%;
-}
-body {
+  box-sizing: border-box;
   margin: 0;
   font-family: Roboto, 'Helvetica Neue', sans-serif;
+  // color: #e0e0e0;
 }
-
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
+/* You can add global styles to this file, and also import other style files */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }

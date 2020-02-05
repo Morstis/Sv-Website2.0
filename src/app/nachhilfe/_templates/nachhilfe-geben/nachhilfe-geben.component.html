@@ -1,3 +1,61 @@
-<p>
-  nachhilfe-geben works!
-</p>
+<form
+  novalidate
+  #nachhilfeGForm="ngForm"
+  (ngSubmit)="save(nachhilfeGForm.value)"
+>
+  <h1>Nachhilfe Geben</h1>
+  <mat-divider></mat-divider>
+  <div id="faecher">
+    <mat-card
+      *ngFor="let fach of faecher"
+      (click)="setFach(fach)"
+      [ngClass]="{ active: activeFaecher.includes(fach) }"
+      >{{ fach | titlecase }}</mat-card
+    >
+  </div>
+  <mat-divider></mat-divider>
+  <br />
+
+  <mat-form-field>
+    <mat-label>Von Jahrgang</mat-label>
+    <mat-select required ngModel #jg1="ngModel" name="jg1">
+      <mat-option *ngFor="let class of classes$ | async" [value]="class">
+        {{ class }}
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="jg1.hasError('required')"
+      >Du musst den Jahrgang angeben</mat-error
+    >
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Von Jahrgang</mat-label>
+    <mat-select required ngModel #jg2="ngModel" name="jg2">
+      <mat-option *ngFor="let class of classes$ | async" [value]="class">
+        {{ class }}
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="jg2.hasError('required')"
+      >Du musst den Jahrgang angeben</mat-error
+    >
+  </mat-form-field>
+
+  <mat-form-field>
+    <textarea
+      matInput
+      placeholder="Weitere Infos"
+      cols="30"
+      rows="10"
+      autocomplete="off"
+    ></textarea>
+  </mat-form-field>
+  <button
+    type="submit"
+    mat-raised-button
+    color="primary"
+    [disabled]="
+      !nachhilfeGForm.valid ? true : activeFaecher.length >= 1 ? false : true
+    "
+  >
+    Senden
+  </button>
+</form>
