@@ -1,14 +1,30 @@
+// html,
+// body,
+// app-root,
+// .app-frame {
+//   overflow: auto;
+//   margin: 0;
+//   margin: 0;
+//   font-family: Roboto, 'Helvetica Neue', sans-serif;
+// }
+// body {
+//   height: 100vh;
+//   width: 100vw;
+//   display: flex;
+//   flex-wrap: wrap;
+// }
 html,
-body,
-app-root,
-.app-frame {
-  overflow: auto;
-  margin: 0;
+body {
   height: 100%;
-  box-sizing: border-box;
+}
+body {
   margin: 0;
   font-family: Roboto, 'Helvetica Neue', sans-serif;
-  // color: #e0e0e0;
+}
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
 }
 /* You can add global styles to this file, and also import other style files */
 ::-webkit-scrollbar {
@@ -22,4 +38,18 @@ app-root,
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
+}
+a {
+  color: dodgerblue;
+  text-decoration: none;
+
+  &:link {
+    color: dodgerblue;
+  }
+  &:visited {
+    color: dodgerblue;
+  }
+  &:active {
+    color: dodgerblue;
+  }
 }

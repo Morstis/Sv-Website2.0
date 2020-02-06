@@ -1,0 +1,44 @@
+<mat-icon svgIcon="Sv" class="extremeLargeIcon"></mat-icon>
+
+<form novalidate #loginForm="ngForm">
+  <h1>Bei der <span>Sv-Website</span> anmelden</h1>
+
+  <mat-form-field>
+    <input
+      matInput
+      type="email"
+      placeholder="Email"
+      name="email"
+      ngModel
+      #email="ngModel"
+      autocomplete="email"
+      spellcheck="false"
+      required
+    />
+    <mat-error *ngIf="email.hasError('required')">Wird Benötigt</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <input
+      matInput
+      type="password"
+      placeholder="Passwort"
+      name="password"
+      ngModel
+      #password="ngModel"
+      autocomplete="current-password"
+      required
+    />
+    <mat-error *ngIf="password.hasError('required')">Wird Benötigt</mat-error>
+  </mat-form-field>
+  <button
+    mat-raised-button
+    color="primary"
+    [disabled]="loginForm.invalid"
+    (click)="login(loginForm.value)"
+    class="mediumButton"
+  >
+    Login
+  </button>
+  <a href="sv-hag.de">Passwort vergessen</a>
+  <a href="sv-hag.de">Registrieren</a>
+</form>

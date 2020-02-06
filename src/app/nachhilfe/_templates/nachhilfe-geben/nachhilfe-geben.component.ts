@@ -11,14 +11,17 @@ import {
   skip,
   toArray
 } from 'rxjs/internal/operators/';
+import { NachhilfeSchueler } from 'src/app/_interfaces/nachhilfe-schueler';
 
 @Component({
   selector: 'mors-nachhilfe-geben',
   templateUrl: './nachhilfe-geben.component.html',
   styleUrls: ['./nachhilfe-geben.component.scss']
 })
-export class NachhilfeGebenComponent implements OnInit {
-  nachhilfeGForm: FormGroup;
+export class NachhilfeGebenComponent {
+  /*  Ich verwende Template driven form anstatt reactive Forms, um die Buttonwahl der Fächer zu realisieren.
+      ansonsten hatte ich die Fächerabfrage außerhalb der form realisieren müssen. Dadurch wäre die Validierung schwieriger geworden.
+  */
   // leider nicht dynamisch
   // TODO: dynamisch machen
   faecher: string[] = [
@@ -48,23 +51,33 @@ export class NachhilfeGebenComponent implements OnInit {
     .pipe(
       mergeMap(x =>
         Object.values(x)
+
           /*  Der Filter wird benötigt um mögliche null returns vom str.match() auszuschließen.
               RegEx Referenz: https://regex101.com/
           */
           .filter(
             (y: string) => y.match(/Q[0-9]|E[0-9]|[0-9][0-9]|[0-9]/gi) !== null
           )
+          // Es werden die Buchstaben raussortiert
           .map((y: string) => y.match(/Q[0-9]|E[0-9]|[0-9][0-9]|[0-9]/gi))
       ),
+      // Die Zahlen werden gruppiert
       groupBy(x => x[0]),
       map(group => group.key),
-      toArray()
+      toArray(),
+      // Zu letzt wird das String Array umgedreht
+      map(x => x.reverse())
     );
 
   constructor(private http: HttpClient) {}
 
   save(formValue) {
-    console.log(formValue, this.activeFaecher);
+    const nachhilfeSchueler: NachhilfeSchueler = {
+      faecher: this.activeFaecher,
+      jahrgang: { jg1: formValue.jg1.class, jg2: formValue.jg2.class },
+      info: formValue.info
+    };
+    console.log(nachhilfeSchueler);
   }
 
   setFach(fach) {
@@ -76,5 +89,4 @@ export class NachhilfeGebenComponent implements OnInit {
       this.activeFaecher = [...this.activeFaecher, fach];
     }
   }
-  ngOnInit() {}
 }

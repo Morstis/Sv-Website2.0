@@ -3,8 +3,7 @@ form {
   display: flex;
   flex-direction: column;
   width: 40%;
-  margin: 0 auto;
-  padding-top: 2%;
+  margin: 1rem auto;
   @include noselect;
 
   // border: red solid 5px;
@@ -13,6 +12,7 @@ form {
   }
   h1 {
     text-align: center;
+    font-weight: bold;
   }
   #faecher {
     display: flex;
@@ -47,8 +47,12 @@ form {
   }
 }
 
-@media only screen and (max-width: 600px) {
-  #form {
-    width: 90%;
+@media only screen and (max-width: 800px) {
+  form {
+    width: 85%;
+    button {
+      width: 50%;
+      align-self: flex-end;
+    }
   }
 }

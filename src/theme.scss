@@ -220,10 +220,11 @@ $altTheme: mat-light-theme($theme-primary, $theme-accent, $theme-warn);
 // Theme Init
 
 @include angular-material-theme($theme);
+$dark-theme: true;
 
-.theme-alternate {
-  @include angular-material-theme($altTheme);
-}
+// .theme-alternate {
+// @include angular-material-theme($altTheme);
+// }
 
 // Specific component overrides, pieces that are not in line with the general theming
 
@@ -275,4 +276,83 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type='number'] {
   -moz-appearance: textfield;
+}
+
+/* Change Autocomplete styles in Chrome*/
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  border: none;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+  @if $dark-theme {
+    -webkit-text-fill-color: white;
+    -webkit-box-shadow: 0 0 0px 1000px $dark-background inset;
+  } @else {
+    -webkit-text-fill-color: black;
+    -webkit-box-shadow: 0 0 0px 1000px $light-background inset;
+  }
+}
+
+.largeButton {
+  width: 5rem;
+  height: 5rem;
+  line-height: 5rem;
+
+  mat-icon {
+    font-size: 3.5rem;
+    width: 3.5rem;
+    height: 3.5rem;
+    line-height: 3.5rem;
+  }
+}
+.mediumButton {
+  width: 4rem;
+  height: 4rem;
+  line-height: 4rem;
+  mat-icon {
+    font-size: 3rem;
+    width: 3rem;
+    height: 3rem;
+    line-height: 3rem;
+  }
+}
+
+.extremeLargeIcon {
+  font-size: 10rem !important;
+  width: 10rem !important;
+  height: 10rem !important;
+  line-height: 10rem !important;
+}
+
+.superLargeIcon {
+  font-size: 4rem !important;
+  width: 4rem !important;
+  height: 4rem !important;
+  line-height: 4rem !important;
+}
+
+.largeIcon {
+  font-size: 3.5rem !important;
+  width: 3.5rem !important;
+  height: 3.5rem !important;
+  line-height: 3.5rem !important;
+}
+
+.mediumIcon {
+  font-size: 3rem !important;
+  width: 3rem !important;
+  height: 3rem !important;
+  line-height: 3rem !important;
+}
+.littleIcon {
+  font-size: 2.5rem !important;
+  width: 2.5rem !important;
+  height: 2.5rem !important;
+  line-height: 2.5rem !important;
 }

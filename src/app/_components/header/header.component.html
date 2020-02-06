@@ -1,9 +1,7 @@
 <mat-toolbar color="primary" class="mat-elevation-z6">
-  <span id="logo"><mat-icon svgIcon="Sv"></mat-icon></span>
+  <mat-icon svgIcon="Sv" class="mediumIcon"></mat-icon>
   <span>Projekte</span>
   <span [routerLink]="['/nachhilfe']">Nachhilfe</span>
   <span>Über Uns</span>
-  <span id="settings">
-    <mat-icon svgIcon="Sv"></mat-icon>
-  </span>
+  <mat-icon [routerLink]="['/login']" class="littleIcon">settings</mat-icon>
 </mat-toolbar>

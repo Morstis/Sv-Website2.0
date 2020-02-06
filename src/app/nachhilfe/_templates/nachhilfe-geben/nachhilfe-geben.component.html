@@ -18,25 +18,48 @@
 
   <mat-form-field>
     <mat-label>Von Jahrgang</mat-label>
-    <mat-select required ngModel #jg1="ngModel" name="jg1">
-      <mat-option *ngFor="let class of classes$ | async" [value]="class">
+    <mat-select
+      required
+      ngModel
+      #jg1="ngModel"
+      name="jg1"
+      [morsCompareWith]="{ control: 'jg2', operator: '<' }"
+    >
+      <mat-option
+        *ngFor="let class of classes$ | async; let i = index"
+        [value]="{ class: class, index: i }"
+      >
         {{ class }}
       </mat-option>
     </mat-select>
-    <mat-error *ngIf="jg1.hasError('required')"
-      >Du musst den Jahrgang angeben</mat-error
-    >
+    <mat-error *ngIf="jg1.invalid">{{
+      jg1.hasError('required')
+        ? 'Du musst den Jahrgang angeben'
+        : "'Von Jahgang' muss kleiner oder gleich 'Bis Jahrgang' sein"
+    }}</mat-error>
   </mat-form-field>
+
   <mat-form-field>
-    <mat-label>Von Jahrgang</mat-label>
-    <mat-select required ngModel #jg2="ngModel" name="jg2">
-      <mat-option *ngFor="let class of classes$ | async" [value]="class">
+    <mat-label>Bis Jahrgang</mat-label>
+    <mat-select
+      required
+      ngModel
+      #jg2="ngModel"
+      name="jg2"
+      [morsCompareWith]="{ control: 'jg1', operator: '>' }"
+    >
+      <mat-option
+        *ngFor="let class of classes$ | async; let i = index"
+        [value]="{ class: class, index: i }"
+      >
         {{ class }}
       </mat-option>
     </mat-select>
-    <mat-error *ngIf="jg2.hasError('required')"
-      >Du musst den Jahrgang angeben</mat-error
-    >
+    <mat-error *ngIf="jg2.invalid">{{
+      jg2.hasError('required')
+        ? 'Du musst den Jahrgang angeben'
+        : "'Bis Jahgang' muss höher oder gleich 'Von Jahrgang' sein"
+    }}</mat-error>
   </mat-form-field>
 
   <mat-form-field>
@@ -46,6 +69,9 @@
       cols="30"
       rows="10"
       autocomplete="off"
+      ngModel
+      #info="ngModel"
+      name="info"
     ></textarea>
   </mat-form-field>
   <button

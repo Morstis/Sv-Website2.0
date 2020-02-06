@@ -5,8 +5,10 @@ import { AngularMaterialModule } from '../angular-material/angular-material.modu
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MatNativeDateModule } from '@angular/material/core';
 
+import { CompareWithDirective } from '../_directives/validation/compare-with.directive';
+
 @NgModule({
-  declarations: [],
+  declarations: [CompareWithDirective],
   imports: [
     CommonModule,
     HttpClientModule,
@@ -19,6 +21,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     HttpClientModule,
     AngularMaterialModule,
     ReactiveFormsModule,
+    CompareWithDirective,
     FormsModule
   ]
 })
