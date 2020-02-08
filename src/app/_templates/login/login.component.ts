@@ -1,11 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  FormGroup,
-  FormControl,
-  Validators,
-  FormBuilder
-} from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
+
+import { AuthService } from 'src/app/_services/auth.service';
+import { LoginData } from 'src/app/_interfaces/login-data';
 
 @Component({
   selector: 'mors-login',
@@ -13,15 +9,15 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  constructor(private http: HttpClient) {}
+  constructor(private auth: AuthService) {}
 
-  login(formValue) {
-    console.log(formValue);
-    this.http
-      .post<Response>('http://localhost:3000' + '/auth/login', formValue)
-      .subscribe(res => {
-        console.log(res);
-      });
+  login(formValue: LoginData) {
+    this.auth.login(formValue).subscribe(res => {
+      if (res.res) {
+        this.auth.setJWT(res.token);
+        window.location.href = '/'; // Realod to get JWT ready
+      }
+    });
   }
 
   ngOnInit() {}

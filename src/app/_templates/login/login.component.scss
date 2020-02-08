@@ -1,38 +1,43 @@
 @import '../../../theme.scss';
-* {
+#wrapper {
   @include noselect;
-}
-form {
+  height: 100%;
   display: flex;
-  flex-wrap: wrap;
-  margin: 4rem auto;
-  width: 30rem;
-  // padding: 1rem;
-  // border-radius: 2px;
-  // text-align: center;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  mat-icon {
+    align-self: flex-start;
+  }
+  form {
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+    width: 30rem;
 
-  & * {
-    width: 100%;
-  }
-  mat-form-field {
-    padding: 0.5rem 0 0.5rem 0;
-    font-size: 150%;
-  }
-  h1 {
-    font-size: 250%;
-    color: grey;
-    font-weight: bold;
-    span {
-      color: mat-color($mat-accent, main) !important;
+    & * {
+      width: 100%;
     }
-  }
-  button {
-    margin: 0;
-  }
-  a {
-    width: 50%;
-    text-align: center;
-    padding: 0.5rem 0 0.5rem 0;
-    margin-top: 0.5rem;
+    mat-form-field {
+      padding: 0.5rem 0 0.5rem 0;
+      font-size: 150%;
+    }
+    h1 {
+      font-size: 250%;
+      color: grey;
+      font-weight: bold;
+      span {
+        color: mat-color($mat-accent, main) !important;
+      }
+    }
+    button {
+      margin: 0;
+    }
+    a {
+      width: 50%;
+      text-align: center;
+      padding: 0.5rem 0 0.5rem 0;
+      margin-top: 0.5rem;
+    }
   }
 }
