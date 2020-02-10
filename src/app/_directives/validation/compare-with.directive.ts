@@ -13,27 +13,27 @@ import { NG_VALIDATORS, AbstractControl, Validator } from '@angular/forms';
 })
 export class CompareWithDirective implements Validator {
   @Input() morsCompareWith: { control: string; operator: string };
-  validate(
-    control: AbstractControl
-  ): { evalationFailed: boolean; operator: string } | null {
-    const controlToCompare = control.parent.get(this.morsCompareWith.control);
+  validate(c: AbstractControl): { [key: string]: { valid: boolean } } | null {
+    const controlToCompare = c.parent.get(this.morsCompareWith.control);
 
-    try {
-      if (
-        controlToCompare &&
-        this.evaluation(controlToCompare.value.index, control.value.index)
-      ) {
-        return {
-          evalationFailed: true,
-          operator: this.morsCompareWith.operator
-        };
-      }
+    if (
+      !c.value ||
+      c.value === '' ||
+      !controlToCompare.value ||
+      controlToCompare.value === ''
+    ) {
       return null;
-    } catch (e) {
-      // Fehler ist nicht irrelavant
+    } else {
+      if (this.evaluation(controlToCompare.value, c.value)) {
+        return null;
+      }
+      return {
+        compareWith: {
+          valid: false
+        }
+      };
     }
   }
-
   private evaluation(param1: any, param2: any) {
     switch (this.morsCompareWith.operator) {
       case '+':
@@ -49,6 +49,7 @@ export class CompareWithDirective implements Validator {
       case '>':
         return param1 > param2;
       case '===':
+        console.log('here');
         return param1 === param2;
     }
   }

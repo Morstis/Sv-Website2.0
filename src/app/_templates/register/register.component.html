@@ -1,0 +1,132 @@
+<div id="wrapper">
+  <mat-icon svgIcon="Sv" class="extremeLargeIcon"></mat-icon>
+  <form novalidate #registerForm="ngForm">
+    <h1><span>SV-Account</span> erstellen</h1>
+
+    <mat-form-field>
+      <input
+        matInput
+        type="text"
+        name="vorname"
+        placeholder="Vorname"
+        ngModel
+        #vorname="ngModel"
+        required
+        autocomplete="given-name"
+      />
+      <mat-error *ngIf="vorname.hasError('required')">Wird Benötigt</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        type="text"
+        name="nachname"
+        placeholder="Nachname"
+        ngModel
+        #nachname="ngModel"
+        required
+        autocomplete="family-name"
+      />
+      <mat-error *ngIf="nachname.hasError('required')">Wird Benötigt</mat-error>
+    </mat-form-field>
+
+    <mat-divider></mat-divider>
+
+    <mat-form-field>
+      <input
+        matInput
+        type="text"
+        name="klasse"
+        placeholder="Klasse"
+        ngModel
+        #klasse="ngModel"
+        required
+        morsKlasseValidation
+      />
+      <mat-error *ngIf="klasse.hasError('klasseValid')"
+        >Bitte gebe deine Klasse an (z.B. 10FLS).</mat-error
+      >
+      <mat-error *ngIf="klasse.hasError('required')">Wird Benötigt</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+        matInput
+        type="email"
+        name="email"
+        placeholder="Iserv Email Adresse"
+        ngModel
+        #email="ngModel"
+        required
+        autocomplete="username"
+        morsEmailValidation
+      />
+      <mat-error *ngIf="email.hasError('required')">Wird Benötigt</mat-error>
+      <mat-error *ngIf="email.hasError('emailValid')"
+        >Deien Email Adresse ist falsch. Bitte gebe deine Iserv Email Adresse
+        an.</mat-error
+      >
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        type="password"
+        name="pw1"
+        placeholder="Passwort"
+        ngModel
+        #pw1="ngModel"
+        required
+        autocomplete="new-password"
+        minlength="8"
+        [morsCompareWith]="{ control: 'pw2', operator: '===' }"
+      />
+      <mat-error *ngIf="pw1.hasError('required')">Wird Benötigt</mat-error>
+      <mat-error *ngIf="pw1.hasError('compareWith')"
+        >Die Passwörter stimmen nicht überein</mat-error
+      >
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        type="password"
+        name="pw2"
+        placeholder="Passwort wiederholen"
+        ngModel
+        #pw2="ngModel"
+        required
+        autocomplete="new-password"
+        minlength="8"
+        [morsCompareWith]="{ control: 'pw1', operator: '===' }"
+      />
+      <mat-error *ngIf="pw2.hasError('required')">Wird Benötigt</mat-error>
+      <mat-error *ngIf="pw2.hasError('compareWith')"
+        >Die Passwörter stimmen nicht überein</mat-error
+      >
+    </mat-form-field>
+    <mat-divider></mat-divider>
+
+    <mat-checkbox ngModel name="datenschutz" #datenschutz="ngModel" required
+      >Ich habe die <a routerLink="/">Datenschutzerklärung</a> gelesen und
+      akzeptiere diese <br />hiermit.</mat-checkbox
+    >
+
+    <button
+      mat-raised-button
+      color="primary"
+      [disabled]="registerForm.invalid"
+      (click)="register(registerForm.value)"
+      class="mediumButton"
+    >
+      Login
+    </button>
+    <button
+      mat-raised-button
+      color="accent"
+      type="reset"
+      routerLink="/login"
+      class="mediumButton"
+    >
+      Abbrechen
+    </button>
+  </form>
+</div>

@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,13 +9,22 @@ import { SharedModule } from './shared/shared.module';
 import { HeaderMobileComponent } from './_components/header-mobile/header-mobile.component';
 import { LoginComponent } from './_templates/login/login.component';
 import { CookieService } from 'ngx-cookie-service';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptorService } from './_interceptors/auth-interceptor.service';
+import { GlobalErrorHandler } from './_classes/global-error-handler';
+import { RegisterComponent } from './_templates/register/register.component';
+import { KlasseValidationDirective } from './_directives/validation/klasse-validation.directive';
+import { EmailValidationDirective } from './_directives/validation/email-validation.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     HeaderMobileComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent,
+    KlasseValidationDirective,
+    EmailValidationDirective
   ],
   imports: [
     BrowserModule,
@@ -23,7 +32,15 @@ import { CookieService } from 'ngx-cookie-service';
     BrowserAnimationsModule,
     SharedModule
   ],
-  providers: [CookieService],
+  providers: [
+    CookieService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true
+    },
+    { provide: ErrorHandler, useClass: GlobalErrorHandler }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

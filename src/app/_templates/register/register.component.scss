@@ -1,0 +1,46 @@
+@import '../../../theme.scss';
+#wrapper {
+  @include noselect;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  mat-icon {
+    align-self: flex-start;
+  }
+  form {
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+    width: 40rem;
+
+    & * {
+      width: 100%;
+    }
+    mat-form-field {
+      //   padding: 0.3rem 0 0.3rem 0;
+      font-size: 150%;
+    }
+    mat-checkbox {
+      padding: 1rem 0 1rem 0;
+
+      font-size: 150%;
+    }
+    mat-divider {
+      padding: 0.3rem 0 0.3rem 0;
+    }
+    h1 {
+      text-align: center;
+      font-size: 250%;
+      color: grey;
+      font-weight: bold;
+      span {
+        color: mat-color($mat-accent, main) !important;
+      }
+    }
+    button {
+      margin: 0 0 1rem 0;
+    }
+  }
+}

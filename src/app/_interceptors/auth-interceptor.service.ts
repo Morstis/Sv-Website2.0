@@ -5,55 +5,52 @@ import {
   HttpRequest,
   HttpHandler,
   HttpEvent,
-  HttpResponse
+  HttpResponse,
+  HttpErrorResponse
 } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { tap } from 'rxjs/internal/operators';
+import { Observable, throwError } from 'rxjs';
+import { tap, map } from 'rxjs/internal/operators';
+import { Router } from '@angular/router';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class AuthInterceptorService implements HttpInterceptor {
-  constructor(private auth: AuthService) {}
+  constructor(private auth: AuthService, private router: Router) {}
 
   intercept(
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    req = req.clone({
-      setHeaders: {
-        auth: this.auth.getJWT()
-      }
-    });
+    if (this.router.url !== '/register') {
+      req = req.clone({
+        setHeaders: {
+          auth: this.auth.getJWT()
+        }
+      });
+    }
 
     return next.handle(req).pipe(
       tap(
-        event => this.handleResponse(req, event),
-        error => this.handleError(req, error)
+        (e: HttpEvent<any>) => this.handleResponse(req, e),
+        (err: HttpErrorResponse) => this.handleError(req, err)
       )
     );
   }
+
   handleResponse(req: HttpRequest<any>, e) {
     if (e instanceof HttpResponse) {
-      console.log(e.headers);
-      const jwt = e.headers.get('auth');
-      console.log(jwt);
-
-      this.auth.setJWT(req.headers.get('auth'));
-      // console.log(this.auth.getJWT());
-
-      // console.log(
-      //   'Request for ',
-      //   e.url,
-      //   ' Response Status ',
-      //   e.status,
-      //   ' With body ',
-      //   e.body
-      // );
+      if (e.headers.get('auth') !== null) {
+        this.auth.setJWT(e.headers.get('auth'));
+      }
     }
   }
 
   handleError(req: HttpRequest<any>, e) {
     if (e.status === 401) {
       console.log('keine Rechte');
+    } else {
+      return throwError(e);
     }
   }
 }

@@ -28,7 +28,7 @@ export class AppComponent {
     });
 
     this.http.get('http://localhost:3000/user').subscribe(res => {
-      console.log(res);
+      console.log('test', res);
     });
   }
 }
