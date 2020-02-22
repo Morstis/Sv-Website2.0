@@ -23,7 +23,7 @@
       ngModel
       #jg1="ngModel"
       name="jg1"
-      [morsCompareWith]="{ control: 'jg2', operator: '<' }"
+      [morsCompareWith]="{ control: 'jg2', operator: '<=' }"
     >
       <mat-option
         *ngFor="let class of classes$ | async; let i = index"
@@ -46,7 +46,7 @@
       ngModel
       #jg2="ngModel"
       name="jg2"
-      [morsCompareWith]="{ control: 'jg1', operator: '>' }"
+      [morsCompareWith]="{ control: 'jg1', operator: '>=' }"
     >
       <mat-option
         *ngFor="let class of classes$ | async; let i = index"

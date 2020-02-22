@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Router, NavigationStart } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { AuthService } from './_services/auth.service';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'mors-root',
@@ -9,7 +11,11 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AppComponent {
   header = true;
-  constructor(private router: Router, private http: HttpClient) {
+  constructor(
+    private router: Router,
+    private http: HttpClient,
+    private auth: AuthService
+  ) {
     // on route change to '/login', set the variable header to false
     router.events.forEach(event => {
       if (event instanceof NavigationStart) {
@@ -27,8 +33,9 @@ export class AppComponent {
       }
     });
 
-    this.http.get('http://localhost:3000/user').subscribe(res => {
-      console.log('test', res);
-    });
+    this.http
+      .get('http://localhost:3000/user')
+      .pipe(tap(x => console.log(x)))
+      .subscribe();
   }
 }

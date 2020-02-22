@@ -1,0 +1,28 @@
+<!-- <div class="dialog">
+  <h1 mat-dialog-title>
+    {{ data.vorname + ' ' + data.nachname }}
+  </h1>
+  <h3>Klasse: {{ data.klasse }}</h3>
+
+  <div mat-dialog-content id="content">
+    <div>
+      Fächer:
+      <span *ngFor="let fach of data.faecher">{{ fach | titlecase }}</span>
+    </div>
+    <div>Info: {{ data.info }}</div>
+  </div>
+</div> -->
+<mat-card>
+  <mat-card-header>
+    <div mat-card-avatar class="sample"></div>
+    <mat-card-title>{{ data.vorname + ' ' + data.nachname }}</mat-card-title>
+    <mat-card-subtitle>Klasse: {{ data.klasse }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <div>
+      Fächer:
+      <div *ngFor="let fach of data.faecher">- {{ fach | titlecase }}</div>
+    </div>
+    <div>Infos: {{ data.info }}</div>
+  </mat-card-content>
+</mat-card>

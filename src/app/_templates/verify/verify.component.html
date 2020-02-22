@@ -1,0 +1,18 @@
+<div id="container">
+  <div *ngIf="message.error; else verified">
+    <h1>{{ message.head }}</h1>
+    <ol>
+      <li>Klicke nochmal auf den Link.</li>
+      <li>Kopiere den Link und füge ihn manuel im Browser ein.</li>
+      <li>
+        Wende dich mit folgender Fehlermeldung an den
+        <a href="mailto:lucas.wiese@gmx.de">Entwickler</a>:
+        <i id="error">{{ message.error }}</i>
+      </li>
+    </ol>
+  </div>
+  <ng-template #verified>
+    <h1 id="verified">{{ message.head }}</h1>
+    <p>Klicke auf <a routerLink="/login">diesen Link</a> um dich einzuloggen</p>
+  </ng-template>
+</div>

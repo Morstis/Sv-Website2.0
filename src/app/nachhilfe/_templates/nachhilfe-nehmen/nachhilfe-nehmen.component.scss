@@ -1,0 +1,28 @@
+@import '../../../../theme.scss';
+mat-form-field {
+  margin-left: 1rem;
+}
+#output {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: start;
+  @include noselect;
+  mat-card {
+    width: 20rem;
+    height: 10rem;
+    padding: 1rem;
+    margin: 1rem;
+
+    .sample {
+      background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+      background-size: cover;
+    }
+    mat-card-content {
+      font-size: 120%;
+    }
+    &:hover {
+      @include mat-elevation(10);
+      cursor: pointer;
+    }
+  }
+}

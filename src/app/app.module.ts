@@ -15,6 +15,7 @@ import { GlobalErrorHandler } from './_classes/global-error-handler';
 import { RegisterComponent } from './_templates/register/register.component';
 import { KlasseValidationDirective } from './_directives/validation/klasse-validation.directive';
 import { EmailValidationDirective } from './_directives/validation/email-validation.directive';
+import { VerifyComponent } from './_templates/verify/verify.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { EmailValidationDirective } from './_directives/validation/email-validat
     LoginComponent,
     RegisterComponent,
     KlasseValidationDirective,
-    EmailValidationDirective
+    EmailValidationDirective,
+    VerifyComponent
   ],
   imports: [
     BrowserModule,

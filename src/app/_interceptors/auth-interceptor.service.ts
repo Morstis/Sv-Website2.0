@@ -11,6 +11,7 @@ import {
 import { Observable, throwError } from 'rxjs';
 import { tap, map } from 'rxjs/internal/operators';
 import { Router } from '@angular/router';
+import { ApiResponse } from '../_interfaces/api-response';
 
 @Injectable({
   providedIn: 'root'
@@ -40,6 +41,19 @@ export class AuthInterceptorService implements HttpInterceptor {
 
   handleResponse(req: HttpRequest<any>, e) {
     if (e instanceof HttpResponse) {
+      if (e.body instanceof Object && e.body.hasOwnProperty('res')) {
+        const body: ApiResponse = e.body;
+        if (body.res === false) {
+          console.log(
+            `%cApi Response Error: %c${body.error} %cDescription: %c${body.description}`,
+            'color: orange',
+            'color: black',
+            'color: orange',
+            'color: black'
+          );
+        }
+      }
+
       if (e.headers.get('auth') !== null) {
         this.auth.setJWT(e.headers.get('auth'));
       }

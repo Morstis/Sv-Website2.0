@@ -3,19 +3,20 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { AuthService } from 'src/app/_services/auth.service';
 import { LoginData } from 'src/app/_interfaces/login-data';
 import { NgForm } from '@angular/forms';
+import { ApiResponse } from 'src/app/_interfaces/api-response';
 
 @Component({
   selector: 'mors-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
   constructor(private auth: AuthService) {}
 
   @ViewChild('loginForm') loginForm: NgForm;
 
   login(formValue: LoginData) {
-    this.auth.login(formValue).subscribe(res => {
+    this.auth.login(formValue).subscribe((res: ApiResponse) => {
       if (res.res) {
         this.auth.setJWT(res.token);
         window.location.href = '/'; // Realod to get JWT ready
@@ -35,6 +36,4 @@ export class LoginComponent implements OnInit {
       }
     });
   }
-
-  ngOnInit() {}
 }

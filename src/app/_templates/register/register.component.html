@@ -66,6 +66,12 @@
         >Deien Email Adresse ist falsch. Bitte gebe deine Iserv Email Adresse
         an.</mat-error
       >
+      <mat-error *ngIf="email.hasError('email adress is not existing')"
+        >Die angegebene Email Adresse existiert nicht</mat-error
+      >
+      <mat-error *ngIf="email.hasError('email already in use')"
+        >Die Email Adresse wird bereits verwendet</mat-error
+      >
     </mat-form-field>
     <mat-form-field>
       <input
@@ -81,7 +87,10 @@
         [morsCompareWith]="{ control: 'pw2', operator: '===' }"
       />
       <mat-error *ngIf="pw1.hasError('required')">Wird Benötigt</mat-error>
-      <mat-error *ngIf="pw1.hasError('compareWith')"
+      <mat-error
+        *ngIf="
+          pw1.hasError('compareWith') || pw1.hasError('password missmatch')
+        "
         >Die Passwörter stimmen nicht überein</mat-error
       >
     </mat-form-field>

@@ -1,17 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import { of, merge, zip, Observable } from 'rxjs';
-import {
-  groupBy,
-  map,
-  flatMap,
-  tap,
-  mergeMap,
-  skip,
-  toArray
-} from 'rxjs/internal/operators/';
-import { NachhilfeSchueler } from 'src/app/_interfaces/nachhilfe-schueler';
+import { Observable } from 'rxjs';
+import { groupBy, map, mergeMap, toArray } from 'rxjs/internal/operators/';
+import { NachhilfeSchueler } from '../../_interfaces/nachhilfe-schueler';
+import { AuthService } from 'src/app/_services/auth.service';
+import { NachhilfeService } from '../../_services/nachhilfe.service';
 
 @Component({
   selector: 'mors-nachhilfe-geben',
@@ -19,6 +13,12 @@ import { NachhilfeSchueler } from 'src/app/_interfaces/nachhilfe-schueler';
   styleUrls: ['./nachhilfe-geben.component.scss']
 })
 export class NachhilfeGebenComponent {
+  constructor(
+    private http: HttpClient,
+    private auth: AuthService,
+    private nachhilfe: NachhilfeService
+  ) {}
+
   /*  Ich verwende Template driven form anstatt reactive Forms, um die Buttonwahl der Fächer zu realisieren.
       ansonsten hatte ich die Fächerabfrage außerhalb der form realisieren müssen. Dadurch wäre die Validierung schwieriger geworden.
   */
@@ -39,6 +39,8 @@ export class NachhilfeGebenComponent {
     'spanisch'
   ];
   activeFaecher: string[] = [];
+  jg1: string;
+  jg2: string;
 
   /*  dynamische Jahrgangerkennung. Das Script holt die Rohdaten von opossum und bearbeitet dann das Observable.
       Referenzen: https://www.learnrxjs.io/
@@ -69,15 +71,14 @@ export class NachhilfeGebenComponent {
       map(x => x.reverse())
     );
 
-  constructor(private http: HttpClient) {}
-
   save(formValue) {
     const nachhilfeSchueler: NachhilfeSchueler = {
+      ...this.auth.getUserFromJwt(),
       faecher: this.activeFaecher,
       jahrgang: { jg1: formValue.jg1.class, jg2: formValue.jg2.class },
       info: formValue.info
     };
-    console.log(nachhilfeSchueler);
+    this.nachhilfe.geben(nachhilfeSchueler).subscribe(res => console.log(res));
   }
 
   setFach(fach) {
