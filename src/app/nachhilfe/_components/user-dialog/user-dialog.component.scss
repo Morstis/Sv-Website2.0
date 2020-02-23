@@ -1,16 +1,23 @@
 @import '../../../../theme.scss';
 
 mat-card {
-  width: 50rem;
-  height: 25rem;
+  @include noselect;
+  // display: flex;
+  width: 50vw;
+  height: 35rem;
   border: none;
   box-shadow: none !important;
+  mat-card-header {
+    button {
+      margin: -1.5rem -1.5rem auto auto;
+    }
+  }
 
   mat-card-title {
     font-size: 2.2rem !important;
   }
   mat-card-subtitle {
-    font-size: 1.2rem !important;
+    font-size: 1.3rem !important;
   }
   .sample {
     background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
@@ -20,11 +27,44 @@ mat-card {
   }
 
   mat-card-content {
-    font-size: 1rem;
-    display: flex;
+    display: grid;
     width: 100%;
-    & > * {
-      width: 100%;
+    height: 80%;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 0.1rem;
+    gap: 2.5rem;
+    grid-template-areas:
+      'jahrgang infos infos'
+      'faecher infos infos'
+      'faecher infos infos'
+      '. email .';
+
+    & > div {
+      font-size: 1.2rem !important;
+
+      & > div {
+        height: 100%;
+        width: 100%;
+        background-color: grey;
+        border: 1px grey solid;
+        border-radius: 2px;
+        padding: 1rem;
+      }
+    }
+    #jahrgang {
+      grid-area: jahrgang;
+    }
+    #faecher {
+      grid-area: faecher;
+    }
+    #infos {
+      grid-area: infos;
+    }
+
+    #email {
+      grid-area: email;
+      text-align: center;
+      font-size: 1.2rem !important;
     }
   }
 }

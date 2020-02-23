@@ -10,4 +10,8 @@ import { NachhilfeSchueler } from '../../_interfaces/nachhilfe-schueler';
 })
 export class UserDialogComponent {
   constructor(@Inject(MAT_DIALOG_DATA) public data: NachhilfeSchueler) {}
+
+  toArray(obj: object) {
+    return Object.values(obj);
+  }
 }
