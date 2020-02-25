@@ -15,6 +15,7 @@ import { UserDialogComponent } from './_components/user-dialog/user-dialog.compo
     NachhilfeNehmenComponent,
     UserDialogComponent
   ],
-  imports: [CommonModule, NachhilfeRoutingModule, SharedModule]
+  imports: [CommonModule, NachhilfeRoutingModule, SharedModule],
+  entryComponents: [UserDialogComponent]
 })
 export class NachhilfeModule {}

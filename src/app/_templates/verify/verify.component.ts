@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/_services/auth.service';
-import { switchMap } from 'rxjs/internal/operators';
+import { switchMap, take } from 'rxjs/internal/operators';
 import { Observable } from 'rxjs';
 import { ApiResponse } from 'src/app/_interfaces/api-response';
 import { VerifyMessage } from 'src/app/_interfaces/verify-message';
@@ -27,7 +27,7 @@ export class VerifyComponent implements OnInit {
   );
 
   ngOnInit(): void {
-    this.verify$.subscribe((res: ApiResponse) => {
+    this.verify$.pipe(take(1)).subscribe((res: ApiResponse) => {
       this.message.head = res.res
         ? 'Du wurdes erfolgreich verifiziert.'
         : 'Etwas ist schief gelaufen! Bitte versuche folgendes';

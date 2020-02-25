@@ -1,9 +1,19 @@
+@import '../../../theme.scss';
+* {
+  @include noselect;
+}
 mat-toolbar {
   justify-content: space-between;
+
   width: 100%;
-  span,
   mat-icon {
-    width: 20%;
+    margin: auto auto auto 0;
+  }
+  span {
+    margin: auto;
+  }
+  mat-icon,
+  span {
     text-align: center;
     &:hover {
       cursor: pointer;
@@ -13,5 +23,9 @@ mat-toolbar {
       outline: none;
       border: 0;
     }
+  }
+
+  #menu {
+    margin: auto 0 auto auto;
   }
 }

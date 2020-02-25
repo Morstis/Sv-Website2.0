@@ -3,5 +3,26 @@
   <span>Projekte</span>
   <span [routerLink]="['/nachhilfe']">Nachhilfe</span>
   <span>Über Uns</span>
-  <mat-icon [routerLink]="['/login']" class="littleIcon">settings</mat-icon>
+
+  <mat-icon
+    class="littleIcon"
+    id="menu"
+    [matMenuTriggerFor]="settings"
+    #trigger="matMenuTrigger"
+    >{{ trigger.menuOpen ? 'menu_open' : 'menu' }}</mat-icon
+  >
+  <mat-menu #settings="matMenu" xPosition="before">
+    <button mat-menu-item>
+      <mat-icon>perm_identity</mat-icon>
+      <span>Anmelden</span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon>settings</mat-icon>
+      <span>Einstellungen</span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon>close</mat-icon>
+      <span>Abmelden</span>
+    </button>
+  </mat-menu>
 </mat-toolbar>

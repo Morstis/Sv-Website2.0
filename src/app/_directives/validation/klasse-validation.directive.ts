@@ -1,7 +1,7 @@
 import { Directive } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormControl, Validator, NG_VALIDATORS } from '@angular/forms';
-import { tap } from 'rxjs/internal/operators';
+import { tap, take } from 'rxjs/internal/operators';
 import { Subscription, Observable } from 'rxjs';
 
 @Directive({
@@ -22,6 +22,7 @@ export class KlasseValidationDirective implements Validator {
     .get<string[]>(
       'https://api.opossum.media/public/mobileapps/hag/KlassenListe.php'
     )
+    .pipe(take(1))
     .subscribe(res => (this.klassen = res));
 
   validate(c: FormControl): { [key: string]: { valid: boolean } } | null {

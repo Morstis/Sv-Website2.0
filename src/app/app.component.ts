@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Router, NavigationStart } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { AuthService } from './_services/auth.service';
 import { tap } from 'rxjs/operators';
 
 @Component({
@@ -11,13 +10,9 @@ import { tap } from 'rxjs/operators';
 })
 export class AppComponent {
   header = true;
-  constructor(
-    private router: Router,
-    private http: HttpClient,
-    private auth: AuthService
-  ) {
+  constructor(private router: Router, private http: HttpClient) {
     // on route change to '/login', set the variable header to false
-    router.events.forEach(event => {
+    this.router.events.forEach(event => {
       if (event instanceof NavigationStart) {
         // ignoring query parameters e.g /verify?email&uid
         const UrlSegment: string[] = event.url.split('?');
