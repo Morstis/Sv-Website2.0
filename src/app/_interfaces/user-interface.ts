@@ -5,4 +5,5 @@ export abstract class UserInterface {
   klasse: string;
   email: string;
   role: string;
+  token?: string;
 }

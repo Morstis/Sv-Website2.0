@@ -9,7 +9,7 @@ import {
   HttpErrorResponse
 } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { tap, map } from 'rxjs/internal/operators';
+import { tap, map, catchError } from 'rxjs/internal/operators';
 import { Router } from '@angular/router';
 import { ApiResponse } from '../_interfaces/api-response';
 
@@ -23,7 +23,12 @@ export class AuthInterceptorService implements HttpInterceptor {
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    if (this.router.url !== '/register') {
+    if (
+      this.router.url !== '/register' &&
+      this.auth.currentUserValue() &&
+      this.router.url !== '/verify' &&
+      this.router.url !== '/login'
+    ) {
       req = req.clone({
         setHeaders: {
           auth: this.auth.getJWT()
@@ -32,10 +37,9 @@ export class AuthInterceptorService implements HttpInterceptor {
     }
 
     return next.handle(req).pipe(
-      tap(
-        (e: HttpEvent<any>) => this.handleResponse(req, e),
-        (err: HttpErrorResponse) => this.handleError(req, err)
-      )
+      catchError(err => this.handleError(req, err)),
+
+      tap((e: HttpEvent<any>) => this.handleResponse(req, e))
     );
   }
 
@@ -59,12 +63,11 @@ export class AuthInterceptorService implements HttpInterceptor {
       }
     }
   }
-
   handleError(req: HttpRequest<any>, e) {
     if (e.status === 401) {
-      console.log('keine Rechte');
-    } else {
-      return throwError(e);
+      this.auth.logout();
     }
+
+    return throwError(e);
   }
 }

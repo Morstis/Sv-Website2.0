@@ -41,6 +41,7 @@ import { VerifyComponent } from './_templates/verify/verify.component';
       useClass: AuthInterceptorService,
       multi: true
     },
+
     { provide: ErrorHandler, useClass: GlobalErrorHandler }
   ],
   bootstrap: [AppComponent]

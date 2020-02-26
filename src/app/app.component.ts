@@ -27,10 +27,5 @@ export class AppComponent {
         }
       }
     });
-
-    this.http
-      .get('http://localhost:3000/user')
-      .pipe(tap(x => console.log(x)))
-      .subscribe();
   }
 }

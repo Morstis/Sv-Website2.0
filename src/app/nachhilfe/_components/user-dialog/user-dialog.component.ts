@@ -1,5 +1,4 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { User } from 'src/app/_classes/user';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { NachhilfeSchueler } from '../../_interfaces/nachhilfe-schueler';
 

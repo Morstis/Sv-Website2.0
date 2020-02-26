@@ -25,8 +25,6 @@ export class NachhilfeNehmenComponent implements OnInit, OnDestroy {
   }
 
   filter(eventValue) {
-    console.log('stupid2');
-
     this.filteredSchueler$ = this.nachhilfeSchueler$.pipe(
       debounceTime(200),
       map(x => {
@@ -39,7 +37,7 @@ export class NachhilfeNehmenComponent implements OnInit, OnDestroy {
       })
     );
   }
-  iamnuicha(id) {
+  show(id) {
     this.nachhilfeSchueler$.pipe(take(1)).subscribe(res => {
       const user = res.filter(x => x.id === id);
       this.dialog.open(UserDialogComponent, {
@@ -55,6 +53,6 @@ export class NachhilfeNehmenComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    // this.subscription.unsubscribe();
   }
 }

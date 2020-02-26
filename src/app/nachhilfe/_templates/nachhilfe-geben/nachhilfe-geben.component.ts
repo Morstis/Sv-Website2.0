@@ -73,7 +73,7 @@ export class NachhilfeGebenComponent {
 
   save(formValue) {
     const nachhilfeSchueler: NachhilfeSchueler = {
-      ...this.auth.getUserFromJwt(),
+      ...this.auth.currentUserValue(),
       faecher: this.activeFaecher,
       jahrgang: { jg1: formValue.jg1.class, jg2: formValue.jg2.class },
       info: formValue.info
