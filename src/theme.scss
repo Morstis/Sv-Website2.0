@@ -219,8 +219,8 @@ $altTheme: mat-light-theme($theme-primary, $theme-accent, $theme-warn);
 
 // Theme Init
 
-@include angular-material-theme($theme);
-$dark-theme: true;
+@include angular-material-theme($altTheme);
+$dark-theme: false;
 
 // .theme-alternate {
 // @include angular-material-theme($altTheme);
@@ -260,7 +260,6 @@ mat-form-field.mat-form-field {
 @mixin noselect {
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none; /* Safari */
-  // -khtml-user-select: none; /* Konqueror HTML */
   -moz-user-select: none; /* Firefox */
   -ms-user-select: none; /* Internet Explorer/Edge */
   user-select: none; /* Non-prefixed version, currently
@@ -297,6 +296,10 @@ select:-webkit-autofill:focus {
     -webkit-text-fill-color: black;
     -webkit-box-shadow: 0 0 0px 1000px $light-background inset;
   }
+}
+
+.wrapper {
+  padding: 1rem;
 }
 
 .largeButton {

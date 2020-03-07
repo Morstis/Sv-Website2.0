@@ -15,9 +15,30 @@ import { Router } from '@angular/router';
 export class AuthService {
   private currentUserSubject: BehaviorSubject<UserInterface>;
   constructor(private http: HttpClient, private router: Router) {
-    this.currentUserSubject = new BehaviorSubject<UserInterface>(null);
+    /* Versucht sich den User token im local Storage zu holen. Parst ihn. Ref: https://jwt.io/ und versucht den User
+       auf das BehaviorSubject zu "schicken"
+    */
+    try {
+      const user: { iat: string; exp: string } & UserInterface = JSON.parse(
+        window.atob(this.getJWT().split('.')[1])
+      );
+      delete user.iat;
+      delete user.exp;
+      this.currentUserSubject = new BehaviorSubject<UserInterface>(user);
+    } catch (err) {
+      // Schickt ansonsten null
+      try {
+        this.currentUserSubject = new BehaviorSubject<UserInterface>(null);
+      } catch (err) {
+        // hat bei allem ein Error seht unwahrscheinlich bis hin zu unmöglich
+        throw Error(
+          'Error after user reading from local storage and after set null escape'
+        );
+      }
+    }
   }
 
+  // Setter und Getter sind an der Stelle für mich subjektiv gesehen hässlicher
   currentUserValue(): UserInterface {
     return this.currentUserSubject.value;
   }
@@ -57,5 +78,6 @@ export class AuthService {
     localStorage.removeItem('token');
     this.setCurrentUser(null);
     this.router.navigateByUrl('/login');
+    console.log('%cLOGOUT!!', 'color: orange');
   }
 }

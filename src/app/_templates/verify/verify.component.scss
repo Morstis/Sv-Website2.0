@@ -1,36 +1,37 @@
-#container {
+.wrapper {
   text-align: center;
   font-size: 1rem;
   padding-top: 35vh;
-}
-h1 {
-  color: rgb(255, 94, 0);
-}
-ol {
-  text-align: left;
-  font-size: 1.2rem;
-  margin: 1rem 28%;
-  li {
-    padding: 0.8rem;
-  }
-}
-#error {
-  color: red;
-}
-#verified {
-  color: steelblue;
-}
-a {
-  color: dodgerblue;
-  text-decoration: none;
 
-  &:link {
-    color: dodgerblue;
+  h1 {
+    color: rgb(255, 94, 0);
   }
-  &:visited {
-    color: dodgerblue;
+  ol {
+    text-align: left;
+    font-size: 1.2rem;
+    margin: 1rem 28%;
+    li {
+      padding: 0.8rem;
+    }
   }
-  &:active {
+  #error {
+    color: red;
+  }
+  #verified {
+    color: steelblue;
+  }
+  a {
     color: dodgerblue;
+    text-decoration: none;
+
+    &:link {
+      color: dodgerblue;
+    }
+    &:visited {
+      color: dodgerblue;
+    }
+    &:active {
+      color: dodgerblue;
+    }
   }
 }

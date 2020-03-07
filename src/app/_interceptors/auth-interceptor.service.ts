@@ -18,16 +18,15 @@ import { ApiResponse } from '../_interfaces/api-response';
 })
 export class AuthInterceptorService implements HttpInterceptor {
   constructor(private auth: AuthService, private router: Router) {}
+  private exclutionRoutes: string[] = ['/register', '/verify', '/login'];
 
   intercept(
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
     if (
-      this.router.url !== '/register' &&
       this.auth.currentUserValue() &&
-      this.router.url !== '/verify' &&
-      this.router.url !== '/login'
+      !this.exclutionRoutes.includes(this.router.url)
     ) {
       req = req.clone({
         setHeaders: {
@@ -66,6 +65,7 @@ export class AuthInterceptorService implements HttpInterceptor {
   handleError(req: HttpRequest<any>, e) {
     if (e.status === 401) {
       this.auth.logout();
+      return;
     }
 
     return throwError(e);

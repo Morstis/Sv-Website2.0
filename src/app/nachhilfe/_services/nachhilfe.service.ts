@@ -3,9 +3,9 @@ import { NachhilfeStoreService } from './nachhilfe-store.service';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { NachhilfeSchueler } from '../_interfaces/nachhilfe-schueler';
-import { BASE_URL } from 'src/app/_config';
 import { ADD, LOAD } from 'src/app/_stores/generic-store.service';
 import { tap } from 'rxjs/internal/operators';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +19,7 @@ export class NachhilfeService {
 
   geben(user: NachhilfeSchueler) {
     return this.http
-      .post<{ return: object }>(BASE_URL + 'nachhilfe', user)
+      .post<{ return: object }>(environment.APIURL + 'nachhilfe', user)
       .pipe(
         tap(returnedUser => {
           this.store.dispach({ type: ADD, data: returnedUser });
@@ -28,10 +28,12 @@ export class NachhilfeService {
   }
 
   nehmen(): Observable<NachhilfeSchueler[]> {
-    return this.http.get<NachhilfeSchueler[]>(BASE_URL + 'nachhilfe').pipe(
-      tap(returnedUser => {
-        this.store.dispach({ type: LOAD, data: returnedUser });
-      })
-    );
+    return this.http
+      .get<NachhilfeSchueler[]>(environment.APIURL + 'nachhilfe')
+      .pipe(
+        tap(returnedUser => {
+          this.store.dispach({ type: LOAD, data: returnedUser });
+        })
+      );
   }
 }
