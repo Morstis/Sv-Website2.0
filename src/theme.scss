@@ -219,8 +219,8 @@ $altTheme: mat-light-theme($theme-primary, $theme-accent, $theme-warn);
 
 // Theme Init
 
-@include angular-material-theme($altTheme);
-$dark-theme: false;
+@include angular-material-theme($theme);
+$dark-theme: true;
 
 // .theme-alternate {
 // @include angular-material-theme($altTheme);

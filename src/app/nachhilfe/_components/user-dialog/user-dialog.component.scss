@@ -5,12 +5,11 @@ mat-card {
   display: flex;
   flex-direction: column;
   width: 50vw;
-  height: 35rem;
+  height: 38rem;
   border: none;
   box-shadow: none !important;
   mat-card-header {
     flex-grow: 0;
-    flex-shrink: 0;
     button {
       margin: -1.5rem -1.5rem auto auto;
     }
@@ -31,30 +30,31 @@ mat-card {
 
   mat-card-content {
     flex-grow: 1;
-    flex-shrink: 1;
     display: grid;
     width: 100%;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 3.5fr 0.5fr;
+    grid-template-rows: 78px auto 24px;
     gap: 2rem;
     grid-template-areas:
       'jahrgang infos infos'
       'faecher infos infos'
-      '. email .';
+      'email email email';
 
     & > div {
       font-size: 1.2rem !important;
+      display: flex;
+      flex-direction: column;
 
       & > div {
-        height: 100%;
+        flex-grow: 1;
         width: 100%;
+        border-radius: 2px;
+        padding: 1rem;
         @if $dark-theme {
           background-color: grey;
         } @else {
           background-color: lightgrey;
         }
-        border-radius: 2px;
-        padding: 1rem;
       }
     }
     #jahrgang {
@@ -68,6 +68,7 @@ mat-card {
     }
 
     #email {
+      display: inline;
       grid-area: email;
       text-align: center;
       font-size: 1.2rem !important;

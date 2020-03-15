@@ -1,9 +1,12 @@
 <div id="container">
-  <mors-header *ngIf="header"></mors-header>
+  <mors-header-mobile>
+    <router-outlet></router-outlet>
+  </mors-header-mobile>
+</div>
 
+<!-- <div id="container">
+  <mors-header *ngIf="header"></mors-header>
   <div id="content" class="mat-typography app-frame mat-app-background">
     <router-outlet></router-outlet>
   </div>
-</div>
-
-<!-- fxLayout="column" -->
+</div> -->

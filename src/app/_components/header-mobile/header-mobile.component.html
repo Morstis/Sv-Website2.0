@@ -1,16 +1,64 @@
-<mat-toolbar color="primary" class="mat-elevation-z6">
-  <button mat-icon-button (click)="open = open ? false : true"><mat-icon>menu</mat-icon></button>
-  <h1>Sv-Website</h1>
-</mat-toolbar>
-
 <mat-sidenav-container>
-  <mat-sidenav #sidenav class="mat-elevation-z4" mode="over" [opened]="open">
-    <mat-nav-list>
-      <mat-list-item *ngFor="let item of list">
-        <mat-icon matListIcon>{{ item }}</mat-icon>
-        <h3 matLine>{{ item }}</h3>
-      </mat-list-item>
+  <mat-sidenav #sidenav mode="over">
+    <mat-nav-list role="navigation">
+      <a
+        mat-list-item
+        [routerLink]="['/projekte']"
+        routerLinkActive="router-link-active"
+      >
+        <mat-icon svgIcon="projekte"></mat-icon> Projekte
+      </a>
+      <a
+        mat-list-item
+        [routerLink]="['/nachhilfe/geben']"
+        routerLinkActive="router-link-active"
+      >
+        <mat-icon svgIcon="nachhilfe_g"></mat-icon>Nachhilfe geben
+      </a>
+      <a
+        mat-list-item
+        [routerLink]="['/nachhilfe/nehmen']"
+        routerLinkActive="router-link-active"
+      >
+        <mat-icon svgIcon="projekte"></mat-icon> Nachhilfe nehmen
+      </a>
+      <a
+        mat-list-item
+        [routerLink]="['/ueber_uns']"
+        routerLinkActive="router-link-active"
+      >
+        Über uns
+      </a>
+      <div>
+        <a
+          mat-list-item
+          [routerLink]="['/login']"
+          routerLinkActive="router-link-active"
+        >
+          <mat-icon>perm_identity</mat-icon> Anmelden
+        </a>
+        <a
+          mat-list-item
+          [routerLink]="['/info']"
+          routerLinkActive="router-link-active"
+        >
+          <mat-icon>settings</mat-icon> Einstellungen
+        </a>
+        <a mat-list-item (click)="logout()">
+          <mat-icon>close</mat-icon> Abmelden
+        </a>
+      </div>
     </mat-nav-list>
   </mat-sidenav>
-  <div class="container" style="height:'100rem'">blablabal</div>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary" class="mat-elevation-z4">
+      <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <h1>Sv-Website</h1>
+    </mat-toolbar>
+    <main id="content">
+      <ng-content></ng-content>
+    </main>
+  </mat-sidenav-content>
 </mat-sidenav-container>

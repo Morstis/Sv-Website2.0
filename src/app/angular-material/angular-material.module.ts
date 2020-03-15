@@ -79,11 +79,16 @@ export class AngularMaterialModule {
     private iconRegestry: MatIconRegistry,
     private sanitizer: DomSanitizer
   ) {
+    this.addIcon('Sv', '../assets/icons/SVLogo_weiss.svg');
+    this.addIcon('nachhilfe_g', '../assets/icons/nachhilfe_geben_icon.svg');
+    this.addIcon('nachhilfe_n', '../assets/icons/nachhilfe_nehmen_icon.svg');
+    this.addIcon('projekte', '../assets/icons/projekte_icon.svg');
+  }
+
+  private addIcon(name: string, path: string) {
     this.iconRegestry.addSvgIcon(
-      'Sv',
-      this.sanitizer.bypassSecurityTrustResourceUrl(
-        '../assets/icons/SVLogo_weiss.svg'
-      )
+      name,
+      this.sanitizer.bypassSecurityTrustResourceUrl(path)
     );
   }
 }
