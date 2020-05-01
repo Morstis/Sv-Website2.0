@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "sv-website3-lwp1251": {
+      "hosting": {
+        "Sv-Website": [
+          "sv-website3-lwp1251"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "sv-website3-lwp1251"
+  }
+}
