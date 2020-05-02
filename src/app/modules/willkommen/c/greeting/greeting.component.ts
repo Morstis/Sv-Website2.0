@@ -11,7 +11,7 @@ export class GreetingComponent implements OnInit {
 
   ngOnInit(): void {
     setTimeout(() => {
-      this.router.navigateByUrl('/');
+      this.router.navigateByUrl('/dashboard');
     }, 6000);
   }
 }

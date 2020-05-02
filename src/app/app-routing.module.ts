@@ -4,7 +4,12 @@ import { willkommen } from './modules/willkommen/willkommen.route';
 import { appBody } from './modules/app-body/app-body.route';
 import { auth } from './modules/auth/auth.route';
 
-const routes: Routes = [willkommen, appBody, auth];
+const routes: Routes = [
+  { path: '', pathMatch: 'full', redirectTo: 'willkommen' },
+  willkommen,
+  appBody,
+  auth,
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
