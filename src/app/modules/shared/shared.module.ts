@@ -5,7 +5,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BasicRouterOutletComponent } from './c/basic-router-outlet/basic-router-outlet.component';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [BasicRouterOutletComponent],

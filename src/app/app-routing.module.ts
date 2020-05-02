@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { willkommen } from './modules/willkommen/willkommen.route';
-import { GreetingComponent } from './modules/willkommen/c/greeting/greeting.component';
+import { appBody } from './modules/app-body/app-body.route';
+import { auth } from './modules/auth/auth.route';
 
-const routes: Routes = [willkommen];
+const routes: Routes = [willkommen, appBody, auth];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

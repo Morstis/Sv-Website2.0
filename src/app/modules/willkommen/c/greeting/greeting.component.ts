@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'lw-greeting',
@@ -6,9 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./greeting.component.scss'],
 })
 export class GreetingComponent implements OnInit {
-  constructor() {}
+  constructor(private router: Router) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    setTimeout(() => {
+      this.router.navigateByUrl('/');
+    }, 6000);
+  }
 
   continue() {
     console.log(true);

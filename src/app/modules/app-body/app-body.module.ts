@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { SharedModule } from '../shared/shared.module';
+import { HeaderModule } from './c/header/header.module';
+import { AppBodyModuleComponent } from './c/app-body/app-body.module';
 
 @NgModule({
   declarations: [],
-  imports: [CommonModule],
+  exports: [SharedModule],
 })
 export class AppBodyModule {}

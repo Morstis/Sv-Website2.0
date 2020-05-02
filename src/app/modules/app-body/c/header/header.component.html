@@ -1,0 +1,28 @@
+<mat-toolbar color="primary" class="mat-elevation-z6">
+  <mat-icon svgIcon="SvLogo" class="mediumIcon" routerLink="/"></mat-icon>
+  <span>Projekte</span>
+  <span routerLink="/nachhilfe">Nachhilfe</span>
+  <span>Über Uns</span>
+
+  <mat-icon
+    class="littleIcon"
+    id="menu"
+    [matMenuTriggerFor]="settings"
+    #trigger="matMenuTrigger"
+    >{{ trigger.menuOpen ? "menu_open" : "menu" }}</mat-icon
+  >
+  <mat-menu #settings="matMenu" xPosition="before">
+    <button mat-menu-item routerLink="/login">
+      <mat-icon>perm_identity</mat-icon>
+      <span>Anmelden</span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon>settings</mat-icon>
+      <span>Einstellungen</span>
+    </button>
+    <button mat-menu-item (click)="logout()">
+      <mat-icon>close</mat-icon>
+      <span>Abmelden</span>
+    </button>
+  </mat-menu>
+</mat-toolbar>

@@ -1,0 +1,20 @@
+div {
+  display: flex;
+  height: 100%;
+  animation: uebergang 3s linear forwards;
+  opacity: 0;
+
+  width: 100%;
+  lw-header {
+    width: 100%;
+  }
+}
+
+@keyframes uebergang {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

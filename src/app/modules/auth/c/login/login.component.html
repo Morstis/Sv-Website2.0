@@ -1,0 +1,55 @@
+<!-- <div class="wrapper">
+  <mat-icon svgIcon="SvLogo" class="extremeLargeIcon"></mat-icon>
+
+  <form novalidate #loginForm="ngForm">
+    <h1>Bei der <span>Sv-Website</span> anmelden</h1>
+
+    <mat-form-field>
+      <input
+        matInput
+        type="email"
+        placeholder="Email"
+        name="email"
+        ngModel
+        #email="ngModel"
+        autocomplete="username"
+        spellcheck="false"
+        required
+      />
+      <mat-error *ngIf="email.hasError('required')">Wird Benötigt</mat-error>
+      <mat-error *ngIf="email.hasError('user not found')"
+        >Der User existiert nicht. Bitte Registriere dich</mat-error
+      >
+      <mat-error *ngIf="email.hasError('user is not verified')"
+        >Du bist nicht verifiziert. Bitte verifiziere dich</mat-error
+      >
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        type="password"
+        placeholder="Passwort"
+        name="password"
+        ngModel
+        #password="ngModel"
+        autocomplete="current-password"
+        required
+      />
+      <mat-error *ngIf="password.hasError('required')">Wird Benötigt</mat-error>
+      <mat-error *ngIf="password.hasError('wrong password')"
+        >Das Passwort ist falsch</mat-error
+      >
+    </mat-form-field>
+    <button
+      mat-raised-button
+      color="primary"
+      [disabled]="loginForm.invalid"
+      (click)="login(loginForm.value)"
+      class="mediumButton"
+    >
+      Login
+    </button>
+    <a>Passwort vergessen</a>
+    <a routerLink="/register">Registrieren</a>
+  </form>
+</div> -->
