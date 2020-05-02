@@ -1,20 +1,12 @@
-div {
+.page {
   display: flex;
-  height: 100%;
-  animation: uebergang 3s linear forwards;
-  opacity: 0;
-
   width: 100%;
+  height: 100%;
+  flex-direction: column;
   lw-header {
     width: 100%;
   }
-}
-
-@keyframes uebergang {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
+  .content {
+    margin: 1rem;
   }
 }

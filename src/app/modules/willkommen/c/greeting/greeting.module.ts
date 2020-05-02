@@ -5,6 +5,6 @@ import { WillkommenModule } from '../../willkommen.module';
 
 @NgModule({
   declarations: [GreetingComponent],
-  imports: [WillkommenModule],
+  imports: [SharedModule],
 })
 export class GreetingModule {}

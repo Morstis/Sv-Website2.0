@@ -212,17 +212,42 @@ $mat-warn: (
       darker: $light-primary-text,
     ),
 );
+
+@mixin input-autofill($themeInput) {
+  $foreground: map-get($themeInput, foreground);
+
+  /* Change Autocomplete styles in Chrome*/
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  textarea:-webkit-autofill,
+  textarea:-webkit-autofill:hover,
+  textarea:-webkit-autofill:focus,
+  select:-webkit-autofill,
+  select:-webkit-autofill:hover,
+  select:-webkit-autofill:focus {
+    border: none;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    -webkit-text-fill-color: mat-color($foreground, text);
+    transition: background-color 5000s ease-in-out 0s;
+  }
+}
+
 $theme-warn: mat-palette($mat-warn, main, lighter, darker);
 
 $theme: mat-dark-theme($theme-primary, $theme-accent, $theme-warn);
 $altTheme: mat-light-theme($theme-primary, $theme-accent, $theme-warn);
 
 // Theme Init
-
-@include angular-material-theme($theme);
-
+body {
+  @include angular-material-theme($theme);
+  @include input-autofill($theme);
+  background-image: linear-gradient(10deg, #525252 0%, #2d2d2d 100%);
+}
 .theme-alternate {
   @include angular-material-theme($altTheme);
+  @include input-autofill($altTheme);
+  background-image: linear-gradient(10deg, #d1d1d1 0%, #fafafa 100%);
 }
 
 // Specific component overrides, pieces that are not in line with the general theming
@@ -270,13 +295,37 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+
 /* Firefox */
 input[type="number"] {
   -moz-appearance: textfield;
 }
 
-.wrapper {
-  padding: 1rem;
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+a {
+  color: dodgerblue;
+  text-decoration: none;
+
+  &:link {
+    color: dodgerblue;
+  }
+  &:visited {
+    color: dodgerblue;
+  }
+  &:active {
+    color: dodgerblue;
+  }
 }
 
 .largeButton {
@@ -335,4 +384,8 @@ input[type="number"] {
   width: 2.5rem !important;
   height: 2.5rem !important;
   line-height: 2.5rem !important;
+}
+
+.animation {
+  animation: uebergang 3s linear forwards;
 }

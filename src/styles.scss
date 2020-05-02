@@ -1,15 +1,24 @@
 html,
 body {
   height: 100%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
-  background-image: linear-gradient(10deg, #525252 0%, #2d2d2d 100%);
 }
 
 *,
 *::after,
 *::before {
   box-sizing: border-box;
+}
+@keyframes uebergang {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

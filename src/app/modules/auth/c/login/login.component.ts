@@ -13,6 +13,9 @@ export class LoginComponent {
   @ViewChild('loginForm') loginForm: NgForm;
 
   login(formValue) {
+    console.log(formValue);
+    this.router.navigateByUrl('/');
+
     // this.auth.login(formValue).subscribe((res: ApiResponse) => {
     //   if (res.res) {
     //     this.auth.setJWT(res.token);

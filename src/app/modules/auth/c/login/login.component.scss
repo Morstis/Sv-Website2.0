@@ -1,11 +1,11 @@
 @import "../../../../../theme/theme.scss";
-.wrapper {
+div {
   @include noselect;
   height: 100%;
   display: flex;
-  align-items: center;
-  justify-content: center;
   flex-direction: column;
+  padding: 2rem;
+
   mat-icon {
     align-self: flex-start;
   }

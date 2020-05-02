@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
-import { SharedModule } from '../shared/shared.module';
+import { GreetingModule } from './c/greeting/greeting.module';
 
 @NgModule({
   declarations: [],
-  exports: [SharedModule],
+  imports: [GreetingModule],
 })
 export class WillkommenModule {}

@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
-import { SharedModule } from '../shared/shared.module';
+import { RegisterModule } from './c/register/register.module';
+import { LoginModule } from './c/login/login.module';
 
 @NgModule({
   declarations: [],
-  exports: [SharedModule],
+  imports: [RegisterModule, LoginModule],
 })
 export class AuthModule {}
