@@ -14,8 +14,4 @@ export class GreetingComponent implements OnInit {
       this.router.navigateByUrl('/');
     }, 6000);
   }
-
-  continue() {
-    console.log(true);
-  }
 }

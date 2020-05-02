@@ -1,4 +1,4 @@
-<div class="animation">
+<div [ngClass]="{ animation: animation$ | async }">
   <mat-icon svgIcon="SvLogo" class="extremeLargeIcon"></mat-icon>
 
   <form novalidate #loginForm="ngForm">

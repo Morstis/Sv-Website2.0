@@ -1,6 +1,6 @@
-<div class="animation page">
+<div class="page" [ngClass]="{ animation: animation$ | async }">
   <lw-header></lw-header>
-  <div class="content animation">
+  <div class="content">
     <router-outlet></router-outlet>
   </div>
 </div>

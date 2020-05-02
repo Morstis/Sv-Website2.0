@@ -1,1 +1,18 @@
-<p>settings works!</p>
+<mat-card>
+  <label>
+    <span>Dunkles Design</span>
+    <mat-slide-toggle
+      [(ngModel)]="settings$.value.darkTheme"
+      (change)="change()"
+    ></mat-slide-toggle>
+  </label>
+</mat-card>
+<mat-card>
+  <label>
+    <span>Animation</span>
+    <mat-slide-toggle
+      [(ngModel)]="settings$.value.animation"
+      (change)="change()"
+    ></mat-slide-toggle>
+  </label>
+</mat-card>

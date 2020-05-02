@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { SettingsService } from '../../s/settings.service';
 
 @Component({
   selector: 'lw-settings',
   templateUrl: './settings.component.html',
-  styleUrls: ['./settings.component.scss']
+  styleUrls: ['./settings.component.scss'],
 })
-export class SettingsComponent implements OnInit {
+export class SettingsComponent {
+  settings$ = this.settingsService.settings;
 
-  constructor() { }
+  constructor(private settingsService: SettingsService) {}
 
-  ngOnInit(): void {
+  change() {
+    this.settings$.next(this.settings$.value);
   }
-
 }

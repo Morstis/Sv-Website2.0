@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
+import { SettingsService } from 'src/app/modules/app-body/s/settings.service';
 
 @Component({
   selector: 'lw-login',
@@ -8,7 +9,11 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
-  constructor(private router: Router) {}
+  animation$ = this.settingsService.animation();
+  constructor(
+    private settingsService: SettingsService,
+    private router: Router
+  ) {}
 
   @ViewChild('loginForm') loginForm: NgForm;
 
