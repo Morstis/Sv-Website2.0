@@ -19,7 +19,7 @@ export class LoginComponent {
 
   login(formValue) {
     console.log(formValue);
-    this.router.navigateByUrl('/dashboard');
+    this.router.navigateByUrl('/');
 
     // this.auth.login(formValue).subscribe((res: ApiResponse) => {
     //   if (res.res) {

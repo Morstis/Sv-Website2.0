@@ -16,3 +16,12 @@
     ></mat-slide-toggle>
   </label>
 </mat-card>
+<mat-card>
+  <label>
+    <span>Logo beim start der Website anzeigen?</span>
+    <mat-slide-toggle
+      [(ngModel)]="settings$.value.willkommen"
+      (change)="change()"
+    ></mat-slide-toggle>
+  </label>
+</mat-card>

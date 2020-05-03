@@ -12,6 +12,7 @@ export class SettingsService {
     JSON.parse(localStorage.getItem('settings')) || {
       darkTheme: true,
       animation: true,
+      willkommen: true,
     }
   );
 
@@ -27,5 +28,9 @@ export class SettingsService {
   }
   animation(): Observable<boolean> {
     return this.settings.pipe(map((x) => x.animation));
+  }
+
+  willkommen(): Observable<boolean> {
+    return this.settings.pipe(map((x) => x.willkommen));
   }
 }
