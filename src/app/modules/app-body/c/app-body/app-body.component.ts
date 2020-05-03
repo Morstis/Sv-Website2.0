@@ -8,5 +8,7 @@ import { SettingsService } from '../../s/settings.service';
 })
 export class AppBodyComponent {
   animation$ = this.settingsService.animation();
+  mobileDesignSetting$ = this.settingsService.mobileDesign();
+
   constructor(private settingsService: SettingsService) {}
 }

@@ -13,6 +13,7 @@ export class SettingsService {
       darkTheme: true,
       animation: true,
       willkommen: true,
+      mobileDesign: false,
     }
   );
 
@@ -32,5 +33,11 @@ export class SettingsService {
 
   willkommen(): Observable<boolean> {
     return this.settings.pipe(map((x) => x.willkommen));
+  }
+
+  mobileDesign(): Observable<boolean> {
+    return this.settings.pipe(
+      map((x) => (window.innerWidth <= 800 ? true : x.mobileDesign))
+    );
   }
 }

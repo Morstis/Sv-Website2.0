@@ -25,3 +25,12 @@
     ></mat-slide-toggle>
   </label>
 </mat-card>
+<mat-card>
+  <label>
+    <span>Immer das mobile Design verwenden?</span>
+    <mat-slide-toggle
+      [(ngModel)]="settings$.value.mobileDesign"
+      (change)="change()"
+    ></mat-slide-toggle>
+  </label>
+</mat-card>

@@ -80,8 +80,9 @@ export class MaterialModule {
     this.addIcon('SvLogo', '../../assets/icons/SvLogo.svg');
     this.addIcon('SvLogoSchrift', '../../assets/icons/SvLogo_schrift_opti.svg');
 
-    // this.addIcon('nachhilfe_n', '../assets/icons/nachhilfe_nehmen_icon.svg');
-    // this.addIcon('projekte', '../assets/icons/projekte_icon.svg');
+    this.addIcon('nachhilfe_g', '../../assets/icons/nachhilfe_geben_icon.svg');
+    this.addIcon('nachhilfe_n', '../../assets/icons/nachhilfe_nehmen_icon.svg');
+    this.addIcon('projekte', '../../assets/icons/projekte_icon.svg');
   }
 
   private addIcon(name: string, path: string) {

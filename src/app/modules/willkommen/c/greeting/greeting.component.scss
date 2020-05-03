@@ -5,7 +5,7 @@ div {
   flex-direction: column;
 
   .lw-greeting__mat-icon {
-    width: 65rem !important;
+    width: 80vw !important;
     height: auto;
     margin: auto;
 
@@ -25,11 +25,11 @@ div {
 @keyframes dash {
   0% {
     opacity: 0;
-    transform: translateX(20rem);
+    transform: translateX(27vw);
   }
   35% {
     opacity: 1;
-    transform: translateX(20rem);
+    transform: translateX(27vw);
   }
   50% {
     transform: translateX(0);
@@ -47,7 +47,7 @@ div {
 @keyframes dash2 {
   from {
     opacity: 0;
-    transform: translateX(-5rem);
+    transform: translateX(-5vw);
   }
   to {
     opacity: 1;

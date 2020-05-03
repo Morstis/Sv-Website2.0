@@ -14,11 +14,11 @@ export class AppComponent implements OnInit {
     private router: Router
   ) {}
   ngOnInit(): void {
-    // Relink to willkommen on refresh or enter
+    // Relink to /willkommen on enter and not on refresh
     this.settingsService
       .willkommen()
       .pipe(take(1))
-      .subscribe((res) => {
+      .subscribe((res: boolean) => {
         if (res && sessionStorage.getItem('sameSession') !== 'true') {
           this.router.navigateByUrl('willkommen');
           sessionStorage.setItem('sameSession', 'true');
