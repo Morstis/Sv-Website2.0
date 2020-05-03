@@ -1,16 +1,16 @@
 <div class="page" [ngClass]="{ animation: animation$ | async }">
   <ng-template [ngIf]="!(mobileDesignSetting$ | async)">
     <lw-header></lw-header>
-    <div class="content">
+    <main class="content">
       <router-outlet></router-outlet>
-    </div>
+    </main>
   </ng-template>
 
   <ng-template [ngIf]="mobileDesignSetting$ | async">
     <lw-header-mobile>
-      <div class="content">
+      <main class="content">
         <router-outlet></router-outlet>
-      </div>
+      </main>
     </lw-header-mobile>
   </ng-template>
 </div>

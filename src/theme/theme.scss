@@ -243,11 +243,14 @@ body {
   @include angular-material-theme($theme);
   @include input-autofill($theme);
   background-image: linear-gradient(10deg, #525252 0%, #2d2d2d 100%);
+  // TODO: REMOVE
+  // background-image: linear-gradient(10deg, purple 0%, #2d2d2d 100%);
 }
 .theme-alternate {
   @include angular-material-theme($altTheme);
   @include input-autofill($altTheme);
   background-image: linear-gradient(10deg, #d1d1d1 0%, #fafafa 100%);
+  // background-image: linear-gradient(10deg, purple 0%, #fafafa 100%);
 }
 
 // Specific component overrides, pieces that are not in line with the general theming

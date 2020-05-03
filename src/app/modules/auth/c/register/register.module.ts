@@ -1,13 +1,9 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { RegisterComponent } from './register.component';
-
-
+import { SharedModule } from 'src/app/modules/shared/shared.module';
 
 @NgModule({
   declarations: [RegisterComponent],
-  imports: [
-    CommonModule
-  ]
+  imports: [SharedModule],
 })
-export class RegisterModule { }
+export class RegisterModule {}
