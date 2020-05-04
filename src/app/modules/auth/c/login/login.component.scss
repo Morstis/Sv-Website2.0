@@ -46,5 +46,8 @@ div {
   }
   form {
     width: initial !important;
+    mat-form-field {
+      font-size: 120% !important;
+    }
   }
 }

@@ -1,4 +1,4 @@
-import { Injectable, OnInit, Inject } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Settings } from '../i/settings';
 import { DOCUMENT } from '@angular/common';

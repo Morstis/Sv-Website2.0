@@ -1,0 +1,75 @@
+mat-card {
+  // @include noselect;
+  display: flex;
+  flex-direction: column;
+  width: 50vw;
+  height: 38rem;
+  border: none;
+  box-shadow: none !important;
+  mat-card-header {
+    flex-grow: 0;
+    button {
+      margin: -1.5rem -1.5rem auto auto;
+    }
+  }
+
+  mat-card-title {
+    font-size: 2.2rem !important;
+  }
+  mat-card-subtitle {
+    font-size: 1.3rem !important;
+  }
+  .sample {
+    background-image: url("https://material.angular.io/assets/img/examples/shiba1.jpg");
+    background-size: cover;
+    width: 4rem;
+    height: 4rem;
+  }
+
+  mat-card-content {
+    flex-grow: 1;
+    display: grid;
+    width: 100%;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 78px auto 24px;
+    gap: 2rem;
+    grid-template-areas:
+      "jahrgang infos infos"
+      "faecher infos infos"
+      "email email email";
+
+    & > div {
+      font-size: 1.2rem !important;
+      display: flex;
+      flex-direction: column;
+
+      & > div {
+        flex-grow: 1;
+        width: 100%;
+        border-radius: 2px;
+        padding: 1rem;
+        // @if $dark-theme {
+        //   background-color: grey;
+        // } @else {
+        //   background-color: lightgrey;
+        // }
+      }
+    }
+    #jahrgang {
+      grid-area: jahrgang;
+    }
+    #faecher {
+      grid-area: faecher;
+    }
+    #infos {
+      grid-area: infos;
+    }
+
+    #email {
+      display: inline;
+      grid-area: email;
+      text-align: center;
+      font-size: 1.2rem !important;
+    }
+  }
+}

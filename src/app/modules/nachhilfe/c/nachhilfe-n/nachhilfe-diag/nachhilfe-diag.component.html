@@ -1,0 +1,30 @@
+<mat-card>
+  <mat-card-header>
+    <div mat-card-avatar class="sample"></div>
+    <button mat-icon-button class="mediumButton" matDialogClose>
+      <mat-icon>close</mat-icon>
+    </button>
+
+    <mat-card-title>{{ data.vorname + " " + data.nachname }}</mat-card-title>
+    <mat-card-subtitle>Klasse: {{ data.klasse }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <div id="jahrgang">
+      Jahrgang
+      <div>{{ toArray(data.jahrgang).join(" - ") }}</div>
+    </div>
+    <div id="faecher">
+      Fächer
+      <div>
+        <div *ngFor="let fach of data.faecher">- {{ fach | titlecase }}</div>
+      </div>
+    </div>
+    <div id="infos">
+      Infos
+      <div>{{ data.info }}</div>
+    </div>
+    <div id="email">
+      Email: <a href="mailto:{{ data.email }}">{{ data.email }}</a>
+    </div>
+  </mat-card-content>
+</mat-card>
