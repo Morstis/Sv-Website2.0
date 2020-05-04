@@ -1,1 +1,26 @@
-<p>nachhilfe-n works!</p>
+<div class="noselect">
+  <mat-form-field>
+    <input matInput placeholder="Fach" (keyup)="filter($event.target.value)" />
+  </mat-form-field>
+
+  <div id="output">
+    <mat-card
+      *ngFor="let schueler of filteredSchueler$ || nachhilfeSchueler$ | async"
+      (click)="show(schueler.id)"
+    >
+      <mat-card-header>
+        <div mat-card-avatar class="sample"></div>
+
+        <mat-card-title>{{
+          schueler.vorname + " " + schueler.nachname
+        }}</mat-card-title>
+        <mat-card-subtitle>Klasse: {{ schueler.klasse }}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        Nachhilfe für Jahrgang {{ toArray(schueler.jahrgang).join(" - ") }}
+        <br />
+        Fächer: {{ schueler.faecher.join(", ") | titlecase }}
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

@@ -8,7 +8,7 @@
     <mat-divider></mat-divider>
     <div id="faecher">
       <mat-card
-        *ngFor="let fach of faecher"
+        *ngFor="let fach of faecher$ | async"
         (click)="setFach(fach)"
         class="mat-elevation-z2"
         [ngClass]="{ active: activeFaecher.includes(fach) }"

@@ -1,0 +1,41 @@
+#output {
+  display: grid;
+  // @include noselect;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr));
+  mat-card {
+    animation: cardEntrance 500ms ease-out;
+    animation-fill-mode: backwards;
+    height: 12rem;
+    .sample {
+      background-image: url("https://material.angular.io/assets/img/examples/shiba1.jpg");
+      background-size: cover;
+    }
+    mat-card-content {
+      font-size: 120%;
+    }
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+@keyframes cardEntrance {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media only screen and (max-width: 430px) {
+  #output {
+    grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+    mat-card {
+      height: 16rem;
+    }
+  }
+}

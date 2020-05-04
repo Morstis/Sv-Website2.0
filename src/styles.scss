@@ -14,6 +14,19 @@ body {
 *::before {
   box-sizing: border-box;
 }
+
+.errorSnackbar {
+  background-color: var(--warn-color) !important;
+  color: white !important;
+  font-weight: bold !important;
+}
+
+.successSnackbar {
+  background-color: green !important;
+  color: white !important;
+  font-weight: bold !important;
+}
+
 @keyframes uebergang {
   from {
     opacity: 0;
