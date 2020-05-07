@@ -6,7 +6,7 @@
   <div id="output">
     <mat-card
       *ngFor="let schueler of filteredSchueler$ || nachhilfeSchueler$ | async"
-      (click)="show(schueler.id)"
+      (click)="show(schueler.key)"
     >
       <mat-card-header>
         <div mat-card-avatar class="sample"></div>

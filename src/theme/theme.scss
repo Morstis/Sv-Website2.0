@@ -238,6 +238,15 @@ $theme-warn: mat-palette($mat-warn, main, lighter, darker);
 $theme: mat-dark-theme($theme-primary, $theme-accent, $theme-warn);
 $altTheme: mat-light-theme($theme-primary, $theme-accent, $theme-warn);
 
+.nachhilfePopupb {
+  background-color: grey;
+}
+@mixin alternativeNachhilfePopupb {
+  .nachhilfePopupb {
+    background-color: lightgrey;
+  }
+}
+
 // Theme Init
 body {
   @include angular-material-theme($theme);
@@ -249,7 +258,9 @@ body {
 .theme-alternate {
   @include angular-material-theme($altTheme);
   @include input-autofill($altTheme);
+  @include alternativeNachhilfePopupb();
   background-image: linear-gradient(10deg, #d1d1d1 0%, #fafafa 100%);
+
   // background-image: linear-gradient(10deg, purple 0%, #fafafa 100%);
 }
 

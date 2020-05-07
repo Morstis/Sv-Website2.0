@@ -1,34 +1,23 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { NachhilfeUser } from '../i/nachhilfe-user';
-import { Observable, of, throwError } from 'rxjs';
+import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { mergeMap, groupBy, map, toArray, catchError } from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { GenericSnackbarComponent } from '../../shared/c/generic-snackbar/generic-snackbar.component';
+import { GenericService } from '../../shared/classes/generic-service';
+import { Endpoint } from '../../shared/i/endpoint';
 
 @Injectable({
   providedIn: 'root',
 })
-export class NachhilfeService {
-  dbRef = this.db.doc('modules/nachhilfe');
-
+export class NachhilfeService extends GenericService<NachhilfeUser> {
   constructor(
-    private db: AngularFirestore,
     private http: HttpClient,
-    private snackBar: MatSnackBar
-  ) {}
-
-  geben(data: NachhilfeUser) {
-    return this.dbRef
-      .collection('geben')
-      .add(data)
-      .catch((err) =>
-        this.handleError(err, 'Unerwareteter Fehler beim Upload!')
-      )
-      .then(() => {
-        this.success('Account erstellt');
-      });
+    protected db: AngularFirestore,
+    protected snackBar: MatSnackBar
+  ) {
+    super(db, snackBar, { dbRef: 'modules/nachhilfe', collRef: 'user' });
   }
 
   getFaecher(): Observable<string[]> {
@@ -105,29 +94,5 @@ export class NachhilfeService {
           )
         )
     );
-  }
-
-  handleError(error, message) {
-    console.log(error, message);
-
-    this.snackBar.openFromComponent(GenericSnackbarComponent, {
-      duration: 5000,
-      panelClass: ['errorSnackbar'],
-      horizontalPosition: 'right',
-      verticalPosition: 'top',
-      data: { message, icon: 'error' },
-    });
-
-    return throwError(error);
-  }
-
-  success(message) {
-    this.snackBar.openFromComponent(GenericSnackbarComponent, {
-      duration: 5000,
-      panelClass: ['successSnackbar'],
-      horizontalPosition: 'right',
-      verticalPosition: 'top',
-      data: { message, icon: 'done' },
-    });
   }
 }

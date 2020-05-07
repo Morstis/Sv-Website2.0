@@ -11,17 +11,19 @@
   <mat-card-content>
     <div id="jahrgang">
       Jahrgang
-      <div>{{ toArray(data.jahrgang).join(" - ") }}</div>
+      <div class="nachhilfePopupb">
+        {{ toArray(data.jahrgang).join(" - ") }}
+      </div>
     </div>
     <div id="faecher">
       Fächer
-      <div>
+      <div class="nachhilfePopupb">
         <div *ngFor="let fach of data.faecher">- {{ fach | titlecase }}</div>
       </div>
     </div>
     <div id="infos">
       Infos
-      <div>{{ data.info }}</div>
+      <div class="nachhilfePopupb">{{ data.info }}</div>
     </div>
     <div id="email">
       Email: <a href="mailto:{{ data.email }}">{{ data.email }}</a>

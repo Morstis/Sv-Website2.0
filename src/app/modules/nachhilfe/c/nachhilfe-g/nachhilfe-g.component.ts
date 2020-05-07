@@ -36,14 +36,11 @@ export class NachhilfeGComponent {
       nachname: 'Wiese',
       role: 'ADMIN',
       vorname: 'Lucas',
-      id: 1,
       faecher: this.activeFaecher,
       jahrgang: { jg1: formValue.jg1.class, jg2: formValue.jg2.class },
       info: formValue.info,
     };
-    this.nachhilfeService
-      .geben(nachhilfeSchueler)
-      .then((res) => console.log(res));
+    this.nachhilfeService.upload(nachhilfeSchueler);
 
     console.log(formValue);
   }

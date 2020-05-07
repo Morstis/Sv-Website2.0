@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Observable, Subscription } from 'rxjs';
 import { debounceTime, map, take } from 'rxjs/operators';
 import { NachhilfeUser } from '../../i/nachhilfe-user';
+import { NachhilfeService } from '../../s/nachhilfe.service';
 
 @Component({
   selector: 'lw-nachhilfe-n',
@@ -11,15 +12,16 @@ import { NachhilfeUser } from '../../i/nachhilfe-user';
   styleUrls: ['./nachhilfe-n.component.scss'],
 })
 export class NachhilfeNComponent implements OnInit {
-  constructor(private dialog: MatDialog) {
-    // this.nachhilfeSchueler$ = this.nachhilfe.nachhilfeSchueler$;
-  }
+  constructor(
+    private dialog: MatDialog,
+    private nachhilfeService: NachhilfeService
+  ) {}
   nachhilfeSchueler$: Observable<NachhilfeUser[]>;
   filteredSchueler$: Observable<NachhilfeUser[]>;
   subscription: Subscription;
 
   ngOnInit() {
-    // this.subscription = this.nachhilfe.nehmen().subscribe();
+    this.nachhilfeSchueler$ = this.nachhilfeService.getAll();
   }
 
   filter(eventValue) {
@@ -35,14 +37,17 @@ export class NachhilfeNComponent implements OnInit {
       })
     );
   }
-  show(id) {
+  show(key) {
+    console.log(key);
+
     this.nachhilfeSchueler$.pipe(take(1)).subscribe((res) => {
-      const user = res.filter((x) => x.id === id);
+      const user = res.filter((x) => x.key === key);
       this.dialog.open(NachhilfeDiagComponent, {
         data: user[0],
         autoFocus: false,
         closeOnNavigation: true,
         restoreFocus: false,
+        width: '100%',
       });
     });
   }
