@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { NachhilfeUser } from '../i/nachhilfe-user';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { mergeMap, groupBy, map, toArray, catchError } from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -28,7 +28,7 @@ export class NachhilfeService extends GenericService<NachhilfeUser> {
         catchError((err) =>
           this.handleError(
             err,
-            'Es ist ein unerwarteter Fehler beim gekommen der Fächer aufgetreten!'
+            'Es ist ein unerwarteter Fehler beim bekommen der Fächer aufgetreten!'
           )
         )
       );
@@ -53,16 +53,14 @@ export class NachhilfeService extends GenericService<NachhilfeUser> {
       ],
     });
   }
-  /*  dynamische Jahrgangerkennung. Das Script holt die Rohdaten von opossum und bearbeitet dann das Observable.
+  /*  dynamische Jahrgangerkennung. Das Script holt die Rohdaten von der Api und bearbeitet dann das Observable.
       Referenzen: https://www.learnrxjs.io/
   */
   getClasses(): Observable<string[]> {
     return (
       this.http
         // object that contains strings
-        .get<object>(
-          'https://api.opossum.media/public/mobileapps/hag/KlassenListe.php'
-        )
+        .get<object>('https://klassen.sv-hag.de/index.php')
 
         .pipe(
           mergeMap((x) =>
@@ -70,7 +68,7 @@ export class NachhilfeService extends GenericService<NachhilfeUser> {
 
               /*  Der Filter wird benötigt um mögliche null returns vom str.match() auszuschließen.
               RegEx Referenz: https://regex101.com/
-          */
+              */
               .filter(
                 (y: string) =>
                   y.match(/Q[0-9]|E[0-9]|[0-9][0-9]|[0-9]/gi) !== null
@@ -83,13 +81,21 @@ export class NachhilfeService extends GenericService<NachhilfeUser> {
           map((group) => group.key),
           toArray(),
           // Zu letzt wird das String Array umgedreht
-          map((x) => x.reverse())
+          map((x: string[]) => x.reverse())
         )
         .pipe(
+          map((x: string[]) => {
+            if (x.length < 1) {
+              throwError(
+                'Oppossum hat ein leeres Array returned. Das ist ein sehr großes Problem! Verständige den Entwickler oder versuche es selber zu fixen. API Ref: https://gist.github.com/DrOpossum/92550d137ef9b5909860a1d3d47a121f'
+              );
+            }
+            return x;
+          }),
           catchError((err) =>
             this.handleError(
               err,
-              'Es ist ein unerwarteter Fehler mit opossum aufgetreten!'
+              'Es ist ein unerwarteter beim holen der Klassen ist aufgetreten!'
             )
           )
         )

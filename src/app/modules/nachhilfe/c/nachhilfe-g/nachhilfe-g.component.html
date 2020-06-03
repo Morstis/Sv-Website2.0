@@ -20,9 +20,13 @@
 
     <mat-form-field>
       <mat-label>Von Jahrgang</mat-label>
-      <mat-select required ngModel #jg1="ngModel" name="jg1">
-        <!-- [morsCompareWith]="{ control: 'jg2', operator: '<=' }" -->
-
+      <mat-select
+        required
+        ngModel
+        #jg1="ngModel"
+        name="jg1"
+        [lwCompareWith]="{ control: 'jg2', operator: '<=' }"
+      >
         <mat-option
           *ngFor="let class of classes$ | async; let i = index"
           [value]="{ class: class, index: i }"
@@ -39,9 +43,13 @@
 
     <mat-form-field>
       <mat-label>Bis Jahrgang</mat-label>
-      <mat-select required ngModel #jg2="ngModel" name="jg2">
-        <!-- [morsCompareWith]="{ control: 'jg1', operator: '>=' }" -->
-
+      <mat-select
+        required
+        ngModel
+        #jg2="ngModel"
+        name="jg2"
+        [lwCompareWith]="{ control: 'jg1', operator: '>=' }"
+      >
         <mat-option
           *ngFor="let class of classes$ | async; let i = index"
           [value]="{ class: class, index: i }"

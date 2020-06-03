@@ -5,6 +5,7 @@ div {
   flex-direction: column;
   mat-icon {
     align-self: flex-start;
+    position: absolute;
   }
   form {
     display: flex;
@@ -15,14 +16,12 @@ div {
     & * {
       width: 100%;
     }
-    mat-form-field {
-      font-size: 150%;
-    }
+
     mat-checkbox {
       padding: 1rem 0 1rem 0;
 
       span {
-        font-size: 150%;
+        font-size: 120%;
         display: block;
         width: 100%;
         word-wrap: break-word;
@@ -49,6 +48,7 @@ div {
 
 @media only screen and (max-width: 800px) {
   mat-icon {
+    position: relative !important;
     margin: 0 auto;
   }
   form {

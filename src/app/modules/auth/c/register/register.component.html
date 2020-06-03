@@ -41,7 +41,7 @@
         ngModel
         #klasse="ngModel"
         required
-        morsKlasseValidation
+        lwKlasseValidation
       />
       <mat-error *ngIf="klasse.hasError('klasseValid')"
         >Bitte gebe deine Klasse an (z.B. 10FLS).</mat-error
@@ -59,7 +59,7 @@
         #email="ngModel"
         required
         autocomplete="username"
-        morsEmailValidation
+        lwEmailValidation
       />
       <mat-error *ngIf="email.hasError('required')">Wird Benötigt</mat-error>
       <mat-error *ngIf="email.hasError('emailValid')"
@@ -84,10 +84,14 @@
         required
         autocomplete="new-password"
         minlength="8"
+        [lwCompareWith]="{ control: 'pw2', operator: '===' }"
       />
-      <!-- [morsCompareWith]="{ control: 'pw2', operator: '===' }" -->
 
       <mat-error *ngIf="pw1.hasError('required')">Wird Benötigt</mat-error>
+      <mat-error *ngIf="pw1.hasError('minlength')"
+        >Das Passwort muss mindestens 8 Charaktäre haben</mat-error
+      >
+
       <mat-error
         *ngIf="
           pw1.hasError('compareWith') || pw1.hasError('password missmatch')
@@ -106,10 +110,13 @@
         required
         autocomplete="new-password"
         minlength="8"
+        [lwCompareWith]="{ control: 'pw1', operator: '===' }"
       />
-      <!-- [morsCompareWith]="{ control: 'pw1', operator: '===' }" -->
 
       <mat-error *ngIf="pw2.hasError('required')">Wird Benötigt</mat-error>
+      <mat-error *ngIf="pw2.hasError('minlength')"
+        >Das Passwort muss mindestens 8 Charaktäre haben</mat-error
+      >
       <mat-error *ngIf="pw2.hasError('compareWith')"
         >Die Passwörter stimmen nicht überein</mat-error
       >
