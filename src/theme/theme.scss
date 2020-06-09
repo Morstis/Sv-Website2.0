@@ -252,6 +252,9 @@ body {
   @include angular-material-theme($theme);
   @include input-autofill($theme);
   background-image: linear-gradient(10deg, #525252 0%, #2d2d2d 100%);
+  ::-webkit-scrollbar-track {
+    background: linear-gradient(10deg, #525252 0%, #2d2d2d 100%);
+  }
   // TODO: REMOVE
   // background-image: linear-gradient(10deg, purple 0%, #2d2d2d 100%);
 }
@@ -260,6 +263,9 @@ body {
   @include input-autofill($altTheme);
   @include alternativeNachhilfePopupb();
   background-image: linear-gradient(10deg, #d1d1d1 0%, #fafafa 100%);
+  ::-webkit-scrollbar-track {
+    background: linear-gradient(10deg, #d1d1d1 0%, #fafafa 100%);
+  }
 
   // background-image: linear-gradient(10deg, purple 0%, #fafafa 100%);
 }
@@ -311,9 +317,7 @@ input[type="number"] {
 ::-webkit-scrollbar {
   width: 10px;
 }
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
+
 ::-webkit-scrollbar-thumb {
   background: #888;
 }

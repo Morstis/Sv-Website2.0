@@ -4,7 +4,8 @@
 mat-sidenav-content {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 64px 1fr;
+  // Keine Ahnung warum, aber es funktioniert irgentwie
+  grid-template-rows: minmax(56px, max-content) 1fr;
   height: 100vh;
 
   mat-toolbar {
