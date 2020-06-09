@@ -2,17 +2,29 @@
   background-color: inherit !important;
 }
 mat-sidenav-content {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 64px 1fr;
   height: 100vh;
-}
-mat-toolbar {
-  position: relative;
-  z-index: 1;
-  flex-grow: 0;
-  flex-shrink: 0;
+
+  mat-toolbar {
+    position: fixed;
+    z-index: 1;
+    grid-area: 1/1;
+  }
+  main {
+    flex-grow: 1;
+    flex-shrink: 1;
+    overflow: auto;
+    overflow-x: hidden;
+    width: 100%;
+    grid-area: 2/1;
+    padding: 2rem;
+  }
 }
 mat-sidenav {
+  height: 100vh;
+  position: fixed;
   mat-icon {
     margin-right: 0.7rem;
   }
@@ -31,12 +43,7 @@ mat-sidenav {
     }
   }
 }
-#content {
-  flex-grow: 1;
-  flex-shrink: 1;
-  overflow: auto;
-  overflow-x: hidden;
-}
+
 h1 {
   color: white;
 }

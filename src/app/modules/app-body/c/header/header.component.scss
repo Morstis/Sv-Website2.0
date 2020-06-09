@@ -1,31 +1,50 @@
-mat-toolbar {
-  justify-content: space-between;
-  width: 100%;
-
-  mat-icon {
-    margin: auto auto auto 0;
-  }
-  span {
-    margin: auto;
-  }
-  mat-icon,
-  span {
-    text-align: center;
-    &:hover {
-      cursor: pointer;
-      color: grey;
+.page {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 64px 1fr;
+  height: 100vh;
+  mat-toolbar {
+    justify-content: space-between;
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+    grid-area: 1/1;
+    mat-icon {
+      margin: auto auto auto 0;
     }
-    &:focus {
-      outline: none;
-      border: 0;
+    span {
+      margin: auto;
+    }
+
+    mat-icon,
+    span {
+      text-align: center;
+      &:hover {
+        cursor: pointer;
+        color: grey;
+      }
+      &:focus {
+        outline: none;
+        border: 0;
+      }
+    }
+
+    #menu {
+      margin: auto 0 auto auto;
     }
   }
 
-  #menu {
-    margin: auto 0 auto auto;
+  main {
+    flex-grow: 1;
+    flex-shrink: 1;
+    overflow: auto;
+    overflow-x: hidden;
+    width: 100%;
+    grid-area: 2/1;
+    padding: 2rem;
   }
-}
 
-#logout:hover {
-  background-color: red;
+  #logout:hover {
+    background-color: red;
+  }
 }

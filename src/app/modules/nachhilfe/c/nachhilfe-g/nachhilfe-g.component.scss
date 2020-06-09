@@ -2,8 +2,7 @@ form {
   display: flex;
   flex-direction: column;
   width: 40rem;
-
-  margin: 1rem auto;
+  margin: auto;
   & > * {
     width: 100%;
   }

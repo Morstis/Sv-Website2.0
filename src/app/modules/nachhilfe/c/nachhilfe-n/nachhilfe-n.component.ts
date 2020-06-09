@@ -47,7 +47,8 @@ export class NachhilfeNComponent implements OnInit {
         autoFocus: false,
         closeOnNavigation: true,
         restoreFocus: false,
-        width: '100%',
+        width: '90%',
+        maxWidth: '50rem',
       });
     });
   }
