@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/modules/auth/s/auth.service';
 
 @Component({
   selector: 'lw-header',
@@ -6,10 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  constructor() {}
+  constructor(private auth: AuthService) {}
 
   ngOnInit(): void {}
   logout() {
-    console.log('logout');
+    this.auth.logout().then(() => {
+      console.log('%clogout', 'color: orange');
+    });
   }
 }

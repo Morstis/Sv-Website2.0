@@ -10,7 +10,7 @@ import { switchMap, take } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class AuthService implements OnDestroy {
-  user: BehaviorSubject<User> = new BehaviorSubject<User>(null);
+  user$: BehaviorSubject<User> = new BehaviorSubject<User>(null);
   subscription = new Subscription();
 
   constructor(private afAuth: AngularFireAuth, private db: AngularFirestore) {
@@ -28,7 +28,7 @@ export class AuthService implements OnDestroy {
         })
       )
       .subscribe((user) => {
-        this.user.next(user);
+        this.user$.next(user);
       });
   }
 
@@ -61,7 +61,7 @@ export class AuthService implements OnDestroy {
     }
   }
 
-  async signOut(): Promise<boolean | Error> {
+  async logout(): Promise<boolean | Error> {
     try {
       await this.afAuth.signOut();
       return true;

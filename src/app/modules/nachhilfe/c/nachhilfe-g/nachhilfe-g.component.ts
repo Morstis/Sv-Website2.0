@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { NachhilfeUser } from '../../i/nachhilfe-user';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { mergeMap, groupBy, map, toArray } from 'rxjs/operators';
+import { mergeMap, groupBy, map, toArray, take } from 'rxjs/operators';
 import { NachhilfeService } from '../../s/nachhilfe.service';
+import { AuthService } from 'src/app/modules/auth/s/auth.service';
 
 @Component({
   selector: 'lw-nachhilfe-g',
@@ -11,7 +12,10 @@ import { NachhilfeService } from '../../s/nachhilfe.service';
   styleUrls: ['./nachhilfe-g.component.scss'],
 })
 export class NachhilfeGComponent {
-  constructor(private nachhilfeService: NachhilfeService) {}
+  constructor(
+    private nachhilfeService: NachhilfeService,
+    private auth: AuthService
+  ) {}
 
   /*  Ich verwende Template driven form anstatt reactive Forms, um die Buttonwahl der Fächer zu realisieren.
       ansonsten hatte ich die Fächerabfrage außerhalb der form realisieren müssen. Dadurch wäre die Validierung schwieriger geworden.
@@ -23,28 +27,30 @@ export class NachhilfeGComponent {
   jg2: string;
 
   classes$: Observable<string[]> = this.nachhilfeService.getClasses();
+
+  user$ = this.auth.user$;
   // ngOnInit() {
   //   this.nachhilfeService.setFeacher().then((res) => {
   //     console.log(res);
   //   });
   // }
   save(formValue) {
-    const nachhilfeSchueler: NachhilfeUser = {
-      // ...this.auth.currentUserValue(),
-      email: 'lucas.wiese@gmx.de',
-      klasse: '11d',
-      nachname: 'Wiese',
-      vorname: 'Lucas',
-      datenschutz: true,
-      rolle: 'ADMIN',
-
-      faecher: this.activeFaecher,
-      jahrgang: { jg1: formValue.jg1.class, jg2: formValue.jg2.class },
-      info: formValue.info,
-    };
-    this.nachhilfeService.upload(nachhilfeSchueler);
-
-    console.log(formValue);
+    this.user$.pipe(take(1)).subscribe((user) => {
+      if (user) {
+        const nachhilfeSchueler: NachhilfeUser = {
+          ...user,
+          faecher: this.activeFaecher,
+          jahrgang: { jg1: formValue.jg1.class, jg2: formValue.jg2.class },
+          info: formValue.info,
+        };
+        this.nachhilfeService.upload(nachhilfeSchueler);
+      } else {
+        this.nachhilfeService.handleError(
+          new Error('nicht eingeloggt!'),
+          'Bitte logge dich zuerst ein!'
+        );
+      }
+    });
   }
 
   setFach(fach) {

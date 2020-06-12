@@ -43,8 +43,7 @@
     grid-area: 2/1;
     padding: 2rem;
   }
-
-  #logout:hover {
-    background-color: red;
-  }
+}
+#logout:hover {
+  background-color: red !important;
 }

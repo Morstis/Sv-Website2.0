@@ -93,7 +93,7 @@ export class GenericService<T> {
   }
 
   // displays an error message w/ snackbar
-  protected handleError(error, message): Observable<never> {
+  public handleError(error, message): Observable<never> {
     console.log(error, message); // TODO: add an error catcher
 
     this.snackBar.openFromComponent(GenericSnackbarComponent, {

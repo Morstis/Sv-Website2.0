@@ -14,24 +14,19 @@ import { AngularFireAuth } from '@angular/fire/auth';
 })
 export class LoginComponent {
   animation$ = this.settingsService.animation();
-  user$ = this.auth.user;
 
   constructor(
     private settingsService: SettingsService,
     private auth: AuthService,
-    private fireAuth: AngularFireAuth
-  ) {
-    this.auth.signOut();
-    this.user$.subscribe((data) => {
-      console.log(data);
-    });
-  }
+    private router: Router
+  ) {}
 
   @ViewChild('loginForm') loginForm: NgForm;
 
-  login(formValue) {
+  login(formValue: { email: string; password: string }) {
     this.auth.login(formValue.email, formValue.password).then(() => {
-      console.log(true);
+      console.log('%clogged in!', 'color: orange');
+      this.router.navigateByUrl('/');
     });
     // this.auth.login(formValue).subscribe((res: ApiResponse) => {
     //   if (res.res) {
