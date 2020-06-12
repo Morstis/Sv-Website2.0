@@ -2,6 +2,10 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { SettingsService } from 'src/app/modules/app-body/s/settings.service';
+import { AngularFireFunctions } from '@angular/fire/functions/';
+import { HttpClient } from '@angular/common/http';
+import { AuthService } from '../../s/auth.service';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'lw-login',
@@ -10,17 +14,25 @@ import { SettingsService } from 'src/app/modules/app-body/s/settings.service';
 })
 export class LoginComponent {
   animation$ = this.settingsService.animation();
+  user$ = this.auth.user;
+
   constructor(
     private settingsService: SettingsService,
-    private router: Router
-  ) {}
+    private auth: AuthService,
+    private fireAuth: AngularFireAuth
+  ) {
+    this.auth.signOut();
+    this.user$.subscribe((data) => {
+      console.log(data);
+    });
+  }
 
   @ViewChild('loginForm') loginForm: NgForm;
 
   login(formValue) {
-    console.log(formValue);
-    this.router.navigateByUrl('/');
-
+    this.auth.login(formValue.email, formValue.password).then(() => {
+      console.log(true);
+    });
     // this.auth.login(formValue).subscribe((res: ApiResponse) => {
     //   if (res.res) {
     //     this.auth.setJWT(res.token);

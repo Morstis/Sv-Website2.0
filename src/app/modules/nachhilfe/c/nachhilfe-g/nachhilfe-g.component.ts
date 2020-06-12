@@ -34,8 +34,10 @@ export class NachhilfeGComponent {
       email: 'lucas.wiese@gmx.de',
       klasse: '11d',
       nachname: 'Wiese',
-      role: 'ADMIN',
       vorname: 'Lucas',
+      datenschutz: true,
+      rolle: 'ADMIN',
+
       faecher: this.activeFaecher,
       jahrgang: { jg1: formValue.jg1.class, jg2: formValue.jg2.class },
       info: formValue.info,

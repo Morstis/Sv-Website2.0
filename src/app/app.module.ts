@@ -10,6 +10,7 @@ import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire';
 import 'firebase/app';
 import 'firebase/database';
+import { AngularFireFunctionsModule, ORIGIN } from '@angular/fire/functions';
 
 // App modules
 import { SharedModule } from './modules/shared/shared.module';
@@ -23,14 +24,12 @@ import { NachhilfeModule } from './modules/nachhilfe/nachhilfe.module';
   imports: [
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebase),
-
     SharedModule,
     AppBodyModule,
     WillkommenModule,
     AuthModule,
     NachhilfeModule,
   ],
-  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
