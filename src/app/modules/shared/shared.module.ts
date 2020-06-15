@@ -5,12 +5,14 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BasicRouterOutletComponent } from './c/basic-router-outlet/basic-router-outlet.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { GenericSnackbarComponent } from './c/generic-snackbar/generic-snackbar.component';
 import { KlasseValidationDirective } from './d/klasse-validation.directive';
 import { EmailValidationDirective } from './d/email-validation.directive';
 import { CompareWithDirective } from './d/compare-with.directive';
+import { LoaderComponent } from './c/loader/loader.component';
+import { LoaderInterceptor } from './interceptors/loader.interceptor';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,7 @@ import { CompareWithDirective } from './d/compare-with.directive';
     KlasseValidationDirective,
     EmailValidationDirective,
     CompareWithDirective,
+    LoaderComponent,
   ],
   imports: [
     CommonModule,
@@ -38,6 +41,10 @@ import { CompareWithDirective } from './d/compare-with.directive';
     GenericSnackbarComponent,
     KlasseValidationDirective,
     EmailValidationDirective,
+    LoaderComponent,
+  ],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true },
   ],
 })
 export class SharedModule {}

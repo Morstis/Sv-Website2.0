@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { NachhilfeDiagComponent } from './nachhilfe-diag/nachhilfe-diag.component';
 import { MatDialog } from '@angular/material/dialog';
 import { Observable, Subscription } from 'rxjs';
 import { debounceTime, map, take } from 'rxjs/operators';
 import { NachhilfeUser } from '../../i/nachhilfe-user';
 import { NachhilfeService } from '../../s/nachhilfe.service';
+import { LoaderService } from 'src/app/modules/shared/s/loader.service';
 
 @Component({
   selector: 'lw-nachhilfe-n',
@@ -52,8 +53,8 @@ export class NachhilfeNComponent implements OnInit {
       });
     });
   }
-  toArray(obj) {
-    return Object.values(obj);
+  jahrgang(jahrgang: { jg1: string; jg2: string }) {
+    return jahrgang.jg1 + ' - ' + jahrgang.jg2;
   }
 
   ngOnDestroy(): void {

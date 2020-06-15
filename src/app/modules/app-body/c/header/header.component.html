@@ -28,6 +28,7 @@
     </mat-menu>
   </mat-toolbar>
   <main>
-    <ng-content></ng-content>
+    <lw-loader *ngIf="isLoading$ | async"></lw-loader>
+    <ng-content *ngIf="!(isLoading$ | async)"></ng-content>
   </main>
 </div>

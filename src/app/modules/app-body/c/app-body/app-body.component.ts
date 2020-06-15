@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { SettingsService } from '../../s/settings.service';
 import { AuthService } from 'src/app/modules/auth/s/auth.service';
+import { Subject } from 'rxjs';
+import { LoaderService } from 'src/app/modules/shared/s/loader.service';
 
 @Component({
   selector: 'lw-app-body',

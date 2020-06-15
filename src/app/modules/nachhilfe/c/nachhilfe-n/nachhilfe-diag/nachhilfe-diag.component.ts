@@ -10,7 +10,7 @@ import { NachhilfeUser } from '../../../i/nachhilfe-user';
 export class NachhilfeDiagComponent {
   constructor(@Inject(MAT_DIALOG_DATA) public data: NachhilfeUser) {}
 
-  toArray(obj: object) {
-    return Object.values(obj);
+  jahrgang(jahrgang: { jg1: string; jg2: string }) {
+    return jahrgang.jg1 + ' - ' + jahrgang.jg2;
   }
 }

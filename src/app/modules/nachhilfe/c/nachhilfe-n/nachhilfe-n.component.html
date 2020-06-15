@@ -17,7 +17,7 @@
         <mat-card-subtitle>Klasse: {{ schueler.klasse }}</mat-card-subtitle>
       </mat-card-header>
       <mat-card-content>
-        Nachhilfe für Jahrgang {{ toArray(schueler.jahrgang).join(" - ") }}
+        Nachhilfe für Jahrgang {{ jahrgang(schueler.jahrgang) }}
         <br />
         Fächer: {{ schueler.faecher.join(", ") | titlecase }}
       </mat-card-content>
