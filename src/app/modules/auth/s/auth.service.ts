@@ -32,12 +32,12 @@ export class AuthService implements OnDestroy {
       });
   }
 
-  async login(email: string, password: string): Promise<boolean | Error> {
+  async login(email: string, password: string): Promise<boolean> {
     try {
       await this.afAuth.signInWithEmailAndPassword(email, password);
       return true;
-    } catch (error) {
-      return new Error(error);
+    } catch (err) {
+      throw err as Error;
     }
   }
 
@@ -45,7 +45,7 @@ export class AuthService implements OnDestroy {
     email: string,
     password: string,
     additional: AdditionUserInfo
-  ): Promise<boolean | Error> {
+  ): Promise<boolean> {
     try {
       const authData = await this.afAuth.createUserWithEmailAndPassword(
         email,
@@ -56,17 +56,17 @@ export class AuthService implements OnDestroy {
         .doc(authData.user.uid)
         .set({ ...new User(authData.user, additional) });
       return true;
-    } catch (error) {
-      return new Error(error);
+    } catch (err) {
+      throw err as Error;
     }
   }
 
-  async logout(): Promise<boolean | Error> {
+  async logout(): Promise<boolean> {
     try {
       await this.afAuth.signOut();
       return true;
     } catch (err) {
-      return new Error(err);
+      throw err as Error;
     }
   }
 

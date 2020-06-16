@@ -5,6 +5,8 @@ import { Observable } from 'rxjs';
 import { mergeMap, groupBy, map, toArray, take } from 'rxjs/operators';
 import { NachhilfeService } from '../../s/nachhilfe.service';
 import { AuthService } from 'src/app/modules/auth/s/auth.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Message } from 'src/app/modules/shared/classes/message.class';
 
 @Component({
   selector: 'lw-nachhilfe-g',
@@ -14,7 +16,8 @@ import { AuthService } from 'src/app/modules/auth/s/auth.service';
 export class NachhilfeGComponent {
   constructor(
     private nachhilfeService: NachhilfeService,
-    private auth: AuthService
+    private auth: AuthService,
+    private snackbar: MatSnackBar
   ) {}
 
   /*  Ich verwende Template driven form anstatt reactive Forms, um die Buttonwahl der Fächer zu realisieren.
@@ -45,7 +48,7 @@ export class NachhilfeGComponent {
         };
         this.nachhilfeService.upload(nachhilfeSchueler);
       } else {
-        this.nachhilfeService.handleError(
+        new Message(this.snackbar).handleError(
           new Error('nicht eingeloggt!'),
           'Bitte logge dich zuerst ein!'
         );

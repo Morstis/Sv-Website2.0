@@ -5,8 +5,9 @@ import { GenericSnackbarComponent } from '../c/generic-snackbar/generic-snackbar
 import { throwError, Observable, combineLatest } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { AngularFirestoreDocument } from '@angular/fire/firestore/public_api';
+import { Message } from './message.class';
 
-export class GenericService<T> {
+export class GenericService<T> extends Message {
   private endpoint: Endpoint;
   protected dbRef: AngularFirestoreDocument<any>;
 
@@ -15,12 +16,14 @@ export class GenericService<T> {
     protected snackBar: MatSnackBar,
     endpoint: Endpoint
   ) {
+    super(snackBar);
     this.endpoint = endpoint;
     this.dbRef = this.db.doc(this.endpoint.dbRef);
   }
 
   // _________Modify Database Methodes______________
-  public upload(data): void {
+  public upload(data: T): void {
+    data = { ...data, creationDate: new Date() };
     this.dbRef
       .collection<T>(this.endpoint.collRef)
       .add(data)
@@ -90,31 +93,5 @@ export class GenericService<T> {
           return x.map((y) => y.payload.doc.id);
         })
       );
-  }
-
-  // displays an error message w/ snackbar
-  public handleError(error, message): Observable<never> {
-    console.log(error, message); // TODO: add an error catcher
-
-    this.snackBar.openFromComponent(GenericSnackbarComponent, {
-      duration: 5000,
-      panelClass: ['errorSnackbar'],
-      horizontalPosition: 'right',
-      verticalPosition: 'top',
-      data: { message, icon: 'error' },
-    });
-
-    return throwError(error);
-  }
-
-  // Displays a success message w/ snackbar
-  protected success(message): void {
-    this.snackBar.openFromComponent(GenericSnackbarComponent, {
-      duration: 5000,
-      panelClass: ['successSnackbar'],
-      horizontalPosition: 'right',
-      verticalPosition: 'top',
-      data: { message, icon: 'done' },
-    });
   }
 }
