@@ -11,7 +11,7 @@ export class Message {
     console.log(error, message); // TODO: add an error catcher
 
     this.snackBar.openFromComponent(GenericSnackbarComponent, {
-      duration: 5000,
+      duration: 4000,
       panelClass: ['errorSnackbar'],
       horizontalPosition: 'right',
       verticalPosition: 'top',
@@ -23,7 +23,7 @@ export class Message {
   // Displays a success message w/ snackbar
   success(message: string): void {
     this.snackBar.openFromComponent(GenericSnackbarComponent, {
-      duration: 5000,
+      duration: 4000,
       panelClass: ['successSnackbar'],
       horizontalPosition: 'right',
       verticalPosition: 'top',
