@@ -32,11 +32,7 @@ export class NachhilfeGComponent {
   classes$: Observable<string[]> = this.nachhilfeService.getClasses();
 
   user$ = this.auth.user$;
-  // ngOnInit() {
-  //   this.nachhilfeService.setFeacher().then((res) => {
-  //     console.log(res);
-  //   });
-  // }
+
   save(formValue) {
     this.user$.pipe(take(1)).subscribe((user) => {
       if (user) {

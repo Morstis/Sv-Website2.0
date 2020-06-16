@@ -12,6 +12,7 @@ export class User extends AdditionUserInfo {
   key?: string;
   email: string;
   rolle: string;
+  creationDate?: firebase.firestore.Timestamp;
 
   constructor(authUser: firebase.User, registerInfo?: AdditionUserInfo) {
     super(registerInfo ? registerInfo : null);

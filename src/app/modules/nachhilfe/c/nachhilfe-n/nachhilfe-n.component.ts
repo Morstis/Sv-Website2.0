@@ -17,13 +17,19 @@ export class NachhilfeNComponent implements OnInit {
     private dialog: MatDialog,
     private nachhilfeService: NachhilfeService
   ) {}
-  nachhilfeSchueler$: Observable<NachhilfeUser[]>;
+  nachhilfeSchueler$: Observable<
+    NachhilfeUser[]
+  > = this.nachhilfeService.getAll().pipe(
+    map((users) => {
+      return users.sort((a, b) => {
+        return b.creationDate.seconds - a.creationDate.seconds;
+      });
+    })
+  );
   filteredSchueler$: Observable<NachhilfeUser[]>;
   subscription: Subscription;
 
-  ngOnInit() {
-    this.nachhilfeSchueler$ = this.nachhilfeService.getAll();
-  }
+  ngOnInit() {}
 
   filter(eventValue) {
     this.filteredSchueler$ = this.nachhilfeSchueler$.pipe(
@@ -39,8 +45,6 @@ export class NachhilfeNComponent implements OnInit {
     );
   }
   show(key) {
-    console.log(key);
-
     this.nachhilfeSchueler$.pipe(take(1)).subscribe((res) => {
       const user = res.filter((x) => x.key === key);
       this.dialog.open(NachhilfeDiagComponent, {

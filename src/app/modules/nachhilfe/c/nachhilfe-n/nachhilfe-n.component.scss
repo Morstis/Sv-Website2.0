@@ -6,6 +6,10 @@
     animation: cardEntrance 500ms ease-out;
     animation-fill-mode: backwards;
     height: 12rem;
+    .date {
+      margin: 0 0 auto auto;
+      color: var(--accent-color);
+    }
     .sample {
       background-image: url("https://material.angular.io/assets/img/examples/shiba1.jpg");
       background-size: cover;
