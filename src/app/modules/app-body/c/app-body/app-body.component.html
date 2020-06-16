@@ -1,12 +1,17 @@
 <div class="page" [ngClass]="{ animation: animation$ | async }">
   <ng-template [ngIf]="!(mobileDesignSetting$ | async)">
     <lw-header>
-      <router-outlet></router-outlet>
+      <ng-container *ngTemplateOutlet="router"></ng-container>
     </lw-header>
   </ng-template>
   <ng-template [ngIf]="mobileDesignSetting$ | async">
     <lw-header-mobile>
-      <router-outlet></router-outlet>
+      <ng-container *ngTemplateOutlet="router"></ng-container>
     </lw-header-mobile>
+  </ng-template>
+
+  <!-- U got the same router outlet w/ dis. Wonderful -->
+  <ng-template #router>
+    <router-outlet></router-outlet>
   </ng-template>
 </div>

@@ -1,8 +1,9 @@
 .page {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 64px 1fr;
   height: 100vh;
+  grid-template-rows: minmax(56px, max-content) 1fr;
+
   mat-toolbar {
     justify-content: space-between;
     width: 100%;
