@@ -28,10 +28,17 @@ export class RegisterComponent implements OnInit {
     this.auth
       .register(value.email, value.pw1, additionUserInfo)
       .catch((err) => {
-        new Message(this.snackbar).handleError(
-          err,
-          'Fehler beim Registrieren!'
-        );
+        if (err.code === 'auth/email-already-in-use') {
+          this.registerForm.form.controls['email'].setErrors({
+            [err.code]: true,
+          });
+          throw err as Error;
+        } else {
+          new Message(this.snackbar).handleError(
+            err,
+            'Fehler beim Registrieren!'
+          );
+        }
       })
       .then(() => {
         new Message(this.snackbar).success('Erfolgreich registriert!');

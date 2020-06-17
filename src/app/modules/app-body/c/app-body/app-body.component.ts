@@ -18,8 +18,6 @@ export class AppBodyComponent {
     private settingsService: SettingsService,
     private auth: AuthService
   ) {
-    this.user$.subscribe((user) => {
-      console.log(user);
-    });
+    this.user$.subscribe();
   }
 }

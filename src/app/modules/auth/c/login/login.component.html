@@ -20,7 +20,7 @@
       <mat-error *ngIf="email.hasError('auth/user-not-found')"
         >Der User existiert nicht. Bitte Registriere dich.</mat-error
       >
-      <mat-error *ngIf="email.hasError('user is not verified')"
+      <mat-error *ngIf="email.hasError('auth/not-verified')"
         >Du bist nicht verifiziert. Bitte verifiziere dich.</mat-error
       >
     </mat-form-field>

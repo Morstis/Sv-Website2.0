@@ -31,15 +31,15 @@ export class LoginComponent {
       .login(formValue.email, formValue.password)
       .catch((err) => {
         this.loginForm.form.controls[
-          err.code === 'auth/user-not-found' ? 'email' : 'password'
+          err.code === 'auth/wrong-password' ? 'password' : 'email'
         ].setErrors({
           [err.code]: true,
         });
         console.warn(err.code);
         throw new Error('Flasche Nutzereingabe beim Login');
       })
-      .then((err) => {
-        console.log(err, '%clogged in!', 'color: orange');
+      .then(() => {
+        console.log('%clogged in!', 'color: orange');
         new Message(this.snackbar).success('Erfolgreich eingeloggt!');
         this.router.navigateByUrl('/');
       });

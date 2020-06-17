@@ -69,7 +69,7 @@
       <mat-error *ngIf="email.hasError('email adress is not existing')"
         >Die angegebene Email Adresse existiert nicht</mat-error
       >
-      <mat-error *ngIf="email.hasError('email already in use')"
+      <mat-error *ngIf="email.hasError('auth/email-already-in-use')"
         >Die Email Adresse wird bereits verwendet</mat-error
       >
     </mat-form-field>

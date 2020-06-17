@@ -2,19 +2,28 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { NachhilfeDiagComponent } from './nachhilfe-diag/nachhilfe-diag.component';
 import { MatDialog } from '@angular/material/dialog';
 import { Observable, Subscription } from 'rxjs';
-import { debounceTime, map, take } from 'rxjs/operators';
+import {
+  debounceTime,
+  map,
+  take,
+  switchMap,
+  skipUntil,
+  last,
+} from 'rxjs/operators';
 import { NachhilfeUser } from '../../i/nachhilfe-user';
 import { NachhilfeService } from '../../s/nachhilfe.service';
 import { LoaderService } from 'src/app/modules/shared/s/loader.service';
+import { AuthService } from 'src/app/modules/auth/s/auth.service';
 
 @Component({
   selector: 'lw-nachhilfe-n',
   templateUrl: './nachhilfe-n.component.html',
   styleUrls: ['./nachhilfe-n.component.scss'],
 })
-export class NachhilfeNComponent implements OnInit {
+export class NachhilfeNComponent {
   constructor(
     private dialog: MatDialog,
+    private auth: AuthService,
     private nachhilfeService: NachhilfeService
   ) {}
   nachhilfeSchueler$: Observable<
@@ -28,8 +37,6 @@ export class NachhilfeNComponent implements OnInit {
   );
   filteredSchueler$: Observable<NachhilfeUser[]>;
   subscription: Subscription;
-
-  ngOnInit() {}
 
   filter(eventValue) {
     this.filteredSchueler$ = this.nachhilfeSchueler$.pipe(
