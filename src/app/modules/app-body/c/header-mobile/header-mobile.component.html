@@ -42,9 +42,16 @@
           mat-list-item
           [routerLink]="['/login']"
           routerLinkActive="router-link-active"
+          *ngIf="(user$ | async) === null"
         >
           <mat-icon>perm_identity</mat-icon> Anmelden
         </a>
+
+        <a mat-list-item *ngIf="(user$ | async) !== null">
+          <mat-icon>perm_identity</mat-icon>
+          {{ (user$ | async)?.vorname + " " + (user$ | async)?.nachname }}
+        </a>
+
         <a
           mat-list-item
           [routerLink]="['/settings']"

@@ -6,19 +6,30 @@
     <span routerLink="/nachhilfe/nehmen">Nachhilfe Nehmen</span>
 
     <!-- <span>Über Uns</span> -->
-
-    <mat-icon
+    <!-- <mat-icon
       class="littleIcon"
       id="menu"
       [matMenuTriggerFor]="settings"
       #trigger="matMenuTrigger"
       >{{ trigger.menuOpen ? "menu_open" : "menu" }}</mat-icon
+    > -->
+
+    <span routerLink="/login" *ngIf="(user$ | async) === null" id="menu">
+      <mat-icon>perm_identity</mat-icon>
+      Anmelden
+    </span>
+
+    <span
+      *ngIf="(user$ | async) !== null"
+      id="menu"
+      [matMenuTriggerFor]="settings"
+      #trigger="matMenuTrigger"
     >
+      <mat-icon>perm_identity</mat-icon>
+      {{ (user$ | async)?.vorname + " " + (user$ | async)?.nachname }}
+    </span>
+
     <mat-menu #settings="matMenu" xPosition="before">
-      <button mat-menu-item routerLink="/login">
-        <mat-icon>perm_identity</mat-icon>
-        <span>Anmelden</span>
-      </button>
       <button mat-menu-item routerLink="/settings">
         <mat-icon>settings</mat-icon>
         <span>Einstellungen</span>

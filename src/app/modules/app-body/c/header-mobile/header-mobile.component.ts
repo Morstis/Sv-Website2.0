@@ -9,6 +9,7 @@ import { LoaderService } from 'src/app/modules/shared/s/loader.service';
 })
 export class HeaderMobileComponent implements OnInit {
   isLoading$ = this.loaderService.state();
+  user$ = this.auth.user$;
 
   constructor(
     private auth: AuthService,

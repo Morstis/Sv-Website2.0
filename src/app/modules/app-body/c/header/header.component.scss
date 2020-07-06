@@ -20,6 +20,10 @@
     mat-icon,
     span {
       text-align: center;
+      display: flex;
+      mat-icon {
+        margin: auto 0.4rem auto 0;
+      }
       &:hover {
         cursor: pointer;
         color: grey;

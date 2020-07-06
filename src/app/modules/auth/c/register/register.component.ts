@@ -4,6 +4,7 @@ import { AuthService } from '../../s/auth.service';
 import { AdditionUserInfo } from 'src/app/modules/shared/i/user';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Message } from 'src/app/modules/shared/classes/message.class';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'lw-register',
@@ -11,7 +12,11 @@ import { Message } from 'src/app/modules/shared/classes/message.class';
   styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent implements OnInit {
-  constructor(private auth: AuthService, private snackbar: MatSnackBar) {}
+  constructor(
+    private auth: AuthService,
+    private snackbar: MatSnackBar,
+    private router: Router
+  ) {}
 
   @ViewChild('registerForm') registerForm: NgForm;
 
@@ -29,7 +34,7 @@ export class RegisterComponent implements OnInit {
       .register(value.email, value.pw1, additionUserInfo)
       .catch((err) => {
         if (err.code === 'auth/email-already-in-use') {
-          this.registerForm.form.controls['email'].setErrors({
+          this.registerForm.form.controls.email.setErrors({
             [err.code]: true,
           });
           throw err as Error;
@@ -42,6 +47,9 @@ export class RegisterComponent implements OnInit {
       })
       .then(() => {
         new Message(this.snackbar).success('Erfolgreich registriert!');
+        setTimeout(() => {
+          this.router.navigateByUrl('/login');
+        }, 3000);
       });
   }
 }

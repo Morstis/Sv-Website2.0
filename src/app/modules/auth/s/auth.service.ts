@@ -11,7 +11,9 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 export class AuthService implements OnDestroy {
-  user$: Subject<User> = new Subject<User>();
+  // Muss eine Behaivior sein. Und kann kein normales Subject sein.
+  // Ref: https://stackoverflow.com/questions/60420547/user-login-logout-button-in-menu-angular-8-not-updating
+  user$: BehaviorSubject<User> = new BehaviorSubject<User>(null);
   subscription = new Subscription();
 
   constructor(

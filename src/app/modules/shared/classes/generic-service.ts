@@ -24,6 +24,7 @@ export class GenericService<T> extends Message {
   // _________Modify Database Methodes______________
   public upload(data: T): void {
     data = { ...data, creationDate: new Date() };
+
     this.dbRef
       .collection<T>(this.endpoint.collRef)
       .add(data)

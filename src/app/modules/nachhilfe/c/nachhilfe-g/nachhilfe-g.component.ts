@@ -1,19 +1,27 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NachhilfeUser } from '../../i/nachhilfe-user';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { mergeMap, groupBy, map, toArray, take } from 'rxjs/operators';
+import { Observable, throwError, Subscription } from 'rxjs';
+import {
+  mergeMap,
+  groupBy,
+  map,
+  toArray,
+  take,
+  catchError,
+} from 'rxjs/operators';
 import { NachhilfeService } from '../../s/nachhilfe.service';
 import { AuthService } from 'src/app/modules/auth/s/auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Message } from 'src/app/modules/shared/classes/message.class';
+import { User } from 'src/app/modules/shared/i/user';
 
 @Component({
   selector: 'lw-nachhilfe-g',
   templateUrl: './nachhilfe-g.component.html',
   styleUrls: ['./nachhilfe-g.component.scss'],
 })
-export class NachhilfeGComponent {
+export class NachhilfeGComponent implements OnInit, OnDestroy {
   constructor(
     private nachhilfeService: NachhilfeService,
     private auth: AuthService,
@@ -32,24 +40,38 @@ export class NachhilfeGComponent {
   classes$: Observable<string[]> = this.nachhilfeService.getClasses();
 
   user$ = this.auth.user$;
+  user: User;
+  sub: Subscription;
 
-  save(formValue) {
-    this.user$.pipe(take(1)).subscribe((user) => {
-      if (user) {
-        const nachhilfeSchueler: NachhilfeUser = {
-          ...user,
-          faecher: this.activeFaecher,
-          jahrgang: { jg1: formValue.jg1.class, jg2: formValue.jg2.class },
-          info: formValue.info,
-        };
-        this.nachhilfeService.upload(nachhilfeSchueler);
-      } else {
+  ngOnInit() {
+    this.sub = this.user$.subscribe(
+      (user) => {
+        this.user = user;
+      },
+      (err) => {
         new Message(this.snackbar).handleError(
-          new Error('nicht eingeloggt!'),
-          'Bitte logge dich zuerst ein!'
+          err,
+          'Ein unerwarteter Fehler ist aufgetreten!'
         );
       }
-    });
+    );
+  }
+
+  save(formValue) {
+    if (this.user) {
+      const nachhilfeSchueler: NachhilfeUser = {
+        ...this.user,
+        faecher: this.activeFaecher,
+        jahrgang: { jg1: formValue.jg1.class, jg2: formValue.jg2.class },
+        info: formValue.info,
+      };
+      this.nachhilfeService.upload(nachhilfeSchueler);
+    } else {
+      new Message(this.snackbar).handleError(
+        new Error('nicht eingeloggt!'),
+        'Bitte logge dich zuerst ein!'
+      );
+    }
   }
 
   setFach(fach) {
@@ -60,5 +82,9 @@ export class NachhilfeGComponent {
     } else {
       this.activeFaecher = [...this.activeFaecher, fach];
     }
+  }
+
+  ngOnDestroy() {
+    this.sub.unsubscribe();
   }
 }

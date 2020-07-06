@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/modules/auth/s/auth.service';
 import { LoaderService } from 'src/app/modules/shared/s/loader.service';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'lw-header',
@@ -9,7 +10,7 @@ import { LoaderService } from 'src/app/modules/shared/s/loader.service';
 })
 export class HeaderComponent {
   isLoading$ = this.loaderService.state();
-
+  user$ = this.auth.user$;
   constructor(
     private auth: AuthService,
     private loaderService: LoaderService
