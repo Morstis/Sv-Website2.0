@@ -9,7 +9,7 @@ export class AdditionUserInfo {
 }
 
 export class User extends AdditionUserInfo {
-  key?: string;
+  key: string;
   email: string;
   rolle: string;
   creationDate?: firebase.firestore.Timestamp;
@@ -19,5 +19,6 @@ export class User extends AdditionUserInfo {
 
     this.email = authUser.email;
     this.rolle = 'USER';
+    this.key = authUser.uid;
   }
 }

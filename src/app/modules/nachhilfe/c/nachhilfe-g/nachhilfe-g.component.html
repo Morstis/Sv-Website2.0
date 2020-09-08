@@ -71,21 +71,38 @@
         cols="30"
         rows="10"
         autocomplete="off"
-        ngModel
+        [(ngModel)]="infoWow"
         #info="ngModel"
         name="info"
       ></textarea>
     </mat-form-field>
-    <button
-      type="submit"
-      mat-raised-button
-      color="primary"
-      class="mediumButton"
-      [disabled]="
-        !nachhilfeGForm.valid ? true : activeFaecher.length >= 1 ? false : true
-      "
-    >
-      Senden
-    </button>
+    <div>
+      <button
+        type="submit"
+        mat-raised-button
+        color="primary"
+        class="mediumButton"
+        [disabled]="
+          !nachhilfeGForm.valid
+            ? true
+            : activeFaecher.length >= 1
+            ? false
+            : true
+        "
+      >
+        Hochladen
+      </button>
+      <button
+        type="button"
+        mat-raised-button
+        color="secondary"
+        class="mediumButton"
+        (click)="del()"
+        *ngIf="infoWow !== null"
+        id="delete"
+      >
+        Löschen
+      </button>
+    </div>
   </form>
 </div>

@@ -16,7 +16,10 @@
         }}</mat-card-title>
         <mat-card-subtitle>Klasse: {{ schueler.klasse }}</mat-card-subtitle>
         <div class="date">
-          {{ schueler.creationDate.seconds * 1000 | date: "d.MM.yyyy" }}
+          {{
+            (schueler.updated?.seconds || schueler.creationDate.seconds) * 1000
+              | date: "dd.MM.yyyy"
+          }}
         </div>
       </mat-card-header>
       <mat-card-content>

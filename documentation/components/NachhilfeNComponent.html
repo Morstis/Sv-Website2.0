@@ -1,0 +1,857 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>sv-website documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">sv-website documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li>NachhilfeNComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/modules/nachhilfe/c/nachhilfe-n/nachhilfe-n.component.ts</code>
+</p>
+
+
+
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>lw-nachhilfe-n</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./nachhilfe-n.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./nachhilfe-n.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#filteredSchueler$">filteredSchueler$</a>
+                            </li>
+                            <li>
+                                <a href="#nachhilfeSchueler$">nachhilfeSchueler$</a>
+                            </li>
+                            <li>
+                                <a href="#subscription">subscription</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#filter">filter</a>
+                            </li>
+                            <li>
+                                <a href="#jahrgang">jahrgang</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnDestroy">ngOnDestroy</a>
+                            </li>
+                            <li>
+                                <a href="#show">show</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(dialog: MatDialog, auth: <a href="../injectables/AuthService.html">AuthService</a>, nachhilfeService: <a href="../injectables/NachhilfeService.html">NachhilfeService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/modules/nachhilfe/c/nachhilfe-n/nachhilfe-n.component.ts:23</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>dialog</td>
+                                                  
+                                                        <td>
+                                                                    <code>MatDialog</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>auth</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AuthService.html" target="_self" >AuthService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>nachhilfeService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/NachhilfeService.html" target="_self" >NachhilfeService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="filter"></a>
+                    <span class="name">
+                        <b>
+                            filter
+                        </b>
+                        <a href="#filter"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>filter(eventValue)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="41"
+                            class="link-to-prism">src/app/modules/nachhilfe/c/nachhilfe-n/nachhilfe-n.component.ts:41</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>eventValue</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="jahrgang"></a>
+                    <span class="name">
+                        <b>
+                            jahrgang
+                        </b>
+                        <a href="#jahrgang"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>jahrgang(jahrgang: literal type)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="67"
+                            class="link-to-prism">src/app/modules/nachhilfe/c/nachhilfe-n/nachhilfe-n.component.ts:67</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>jahrgang</td>
+                                    <td>
+                                            <code>literal type</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnDestroy"></a>
+                    <span class="name">
+                        <b>
+                            ngOnDestroy
+                        </b>
+                        <a href="#ngOnDestroy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnDestroy()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="71"
+                            class="link-to-prism">src/app/modules/nachhilfe/c/nachhilfe-n/nachhilfe-n.component.ts:71</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="show"></a>
+                    <span class="name">
+                        <b>
+                            show
+                        </b>
+                        <a href="#show"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>show(key)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="54"
+                            class="link-to-prism">src/app/modules/nachhilfe/c/nachhilfe-n/nachhilfe-n.component.ts:54</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>key</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="filteredSchueler$"></a>
+                        <span class="name">
+                            <b>
+                            filteredSchueler$</b>
+                            <a href="#filteredSchueler$"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../interfaces/NachhilfeUser.html" target="_self" >Observable&lt;NachhilfeUser[]&gt;</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/app/modules/nachhilfe/c/nachhilfe-n/nachhilfe-n.component.ts:38</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="nachhilfeSchueler$"></a>
+                        <span class="name">
+                            <b>
+                            nachhilfeSchueler$</b>
+                            <a href="#nachhilfeSchueler$"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../interfaces/NachhilfeUser.html" target="_self" >Observable&lt;NachhilfeUser[]&gt;</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>this.nachhilfeService.getAll().pipe(
+    map((users) &#x3D;&gt; {
+      return users.sort((a, b) &#x3D;&gt; {
+        return b.creationDate.seconds - a.creationDate.seconds;
+      });
+    })
+  )</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/modules/nachhilfe/c/nachhilfe-n/nachhilfe-n.component.ts:29</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="subscription"></a>
+                        <span class="name">
+                            <b>
+                            subscription</b>
+                            <a href="#subscription"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>Subscription</code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/modules/nachhilfe/c/nachhilfe-n/nachhilfe-n.component.ts:39</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit, AfterViewInit } from &#x27;@angular/core&#x27;;
+import { NachhilfeDiagComponent } from &#x27;./nachhilfe-diag/nachhilfe-diag.component&#x27;;
+import { MatDialog } from &#x27;@angular/material/dialog&#x27;;
+import { Observable, Subscription } from &#x27;rxjs&#x27;;
+import {
+  debounceTime,
+  map,
+  take,
+  switchMap,
+  skipUntil,
+  last,
+} from &#x27;rxjs/operators&#x27;;
+import { NachhilfeUser } from &#x27;../../i/nachhilfe-user&#x27;;
+import { NachhilfeService } from &#x27;../../s/nachhilfe.service&#x27;;
+import { LoaderService } from &#x27;src/app/modules/shared/s/loader.service&#x27;;
+import { AuthService } from &#x27;src/app/modules/auth/s/auth.service&#x27;;
+
+@Component({
+  selector: &#x27;lw-nachhilfe-n&#x27;,
+  templateUrl: &#x27;./nachhilfe-n.component.html&#x27;,
+  styleUrls: [&#x27;./nachhilfe-n.component.scss&#x27;],
+})
+export class NachhilfeNComponent {
+  constructor(
+    private dialog: MatDialog,
+    private auth: AuthService,
+    private nachhilfeService: NachhilfeService
+  ) {}
+  nachhilfeSchueler$: Observable&lt;
+    NachhilfeUser[]
+  &gt; &#x3D; this.nachhilfeService.getAll().pipe(
+    map((users) &#x3D;&gt; {
+      return users.sort((a, b) &#x3D;&gt; {
+        return b.creationDate.seconds - a.creationDate.seconds;
+      });
+    })
+  );
+  filteredSchueler$: Observable&lt;NachhilfeUser[]&gt;;
+  subscription: Subscription;
+
+  filter(eventValue) {
+    this.filteredSchueler$ &#x3D; this.nachhilfeSchueler$.pipe(
+      debounceTime(200),
+      map((x) &#x3D;&gt; {
+        return x.filter((user) &#x3D;&gt; {
+          const contains: boolean[] &#x3D; user.faecher.map((fach) &#x3D;&gt; {
+            return fach.indexOf(eventValue.toLowerCase()) &#x3D;&#x3D;&#x3D; 0 ? true : false;
+          });
+          return contains.includes(true);
+        });
+      })
+    );
+  }
+  show(key) {
+    this.nachhilfeSchueler$.pipe(take(1)).subscribe((res) &#x3D;&gt; {
+      const user &#x3D; res.filter((x) &#x3D;&gt; x.key &#x3D;&#x3D;&#x3D; key);
+      this.dialog.open(NachhilfeDiagComponent, {
+        data: user[0],
+        autoFocus: false,
+        closeOnNavigation: true,
+        restoreFocus: false,
+        width: &#x27;90%&#x27;,
+        maxWidth: &#x27;50rem&#x27;,
+      });
+    });
+  }
+  jahrgang(jahrgang: { jg1: string; jg2: string }) {
+    return jahrgang.jg1 + &#x27; - &#x27; + jahrgang.jg2;
+  }
+
+  ngOnDestroy(): void {
+    // this.subscription.unsubscribe();
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;noselect&quot;&gt;
+  &lt;mat-form-field&gt;
+    &lt;input matInput placeholder&#x3D;&quot;Fach&quot; (keyup)&#x3D;&quot;filter($event.target.value)&quot; /&gt;
+  &lt;/mat-form-field&gt;
+
+  &lt;div id&#x3D;&quot;output&quot;&gt;
+    &lt;mat-card
+      *ngFor&#x3D;&quot;let schueler of filteredSchueler$ || nachhilfeSchueler$ | async&quot;
+      (click)&#x3D;&quot;show(schueler.key)&quot;
+    &gt;
+      &lt;mat-card-header&gt;
+        &lt;div mat-card-avatar class&#x3D;&quot;sample&quot;&gt;&lt;/div&gt;
+
+        &lt;mat-card-title&gt;{{
+          schueler.vorname + &quot; &quot; + schueler.nachname
+        }}&lt;/mat-card-title&gt;
+        &lt;mat-card-subtitle&gt;Klasse: {{ schueler.klasse }}&lt;/mat-card-subtitle&gt;
+        &lt;div class&#x3D;&quot;date&quot;&gt;
+          {{ schueler.creationDate.seconds * 1000 | date: &quot;dd.MM.yyyy&quot; }}
+        &lt;/div&gt;
+      &lt;/mat-card-header&gt;
+      &lt;mat-card-content&gt;
+        Nachhilfe für Jahrgang {{ jahrgang(schueler.jahrgang) }}
+        &lt;br /&gt;
+        Fächer: {{ schueler.faecher.join(&quot;, &quot;) | titlecase }}
+      &lt;/mat-card-content&gt;
+    &lt;/mat-card&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./nachhilfe-n.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">#output {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr));
+  mat-card {
+    animation: cardEntrance 500ms ease-out;
+    animation-fill-mode: backwards;
+    height: 12rem;
+    .date {
+      margin: 0 0 auto auto;
+      color: var(--accent-color);
+    }
+    .sample {
+      background-image: url(&quot;https://material.angular.io/assets/img/examples/shiba1.jpg&quot;);
+      background-size: cover;
+    }
+    mat-card-content {
+      font-size: 120%;
+    }
+    &amp;:hover {
+      cursor: pointer;
+      box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
+        0px 4px 5px 0px rgba(0, 0, 0, 0.14),
+        0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+    }
+  }
+}
+
+@keyframes cardEntrance {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media only screen and (max-width: 430px) {
+  #output {
+    grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+    mat-card {
+      height: 16rem;
+    }
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="noselect">  <mat-form-field>    <input matInput placeholder="Fach" (keyup)="filter($event.target.value)" />  </mat-form-field>  <div id="output">    <mat-card      *ngFor="let schueler of filteredSchueler$ || nachhilfeSchueler$ | async"      (click)="show(schueler.key)"    >      <mat-card-header>        <div mat-card-avatar class="sample"></div>        <mat-card-title>{{          schueler.vorname + " " + schueler.nachname        }}</mat-card-title>        <mat-card-subtitle>Klasse: {{ schueler.klasse }}</mat-card-subtitle>        <div class="date">          {{ schueler.creationDate.seconds * 1000 | date: "dd.MM.yyyy" }}        </div>      </mat-card-header>      <mat-card-content>        Nachhilfe für Jahrgang {{ jahrgang(schueler.jahrgang) }}        <br />        Fächer: {{ schueler.faecher.join(", ") | titlecase }}      </mat-card-content>    </mat-card>  </div></div></div>'
+    var COMPONENTS = [{'name': 'AppBodyComponent', 'selector': 'lw-app-body'},{'name': 'AppComponent', 'selector': 'lw-root'},{'name': 'BasicRouterOutletComponent', 'selector': 'lw-basic-router-outlet'},{'name': 'GenericSnackbarComponent', 'selector': 'lw-generic-snackbar'},{'name': 'GreetingComponent', 'selector': 'lw-greeting'},{'name': 'HeaderComponent', 'selector': 'lw-header'},{'name': 'HeaderMobileComponent', 'selector': 'lw-header-mobile'},{'name': 'LoaderComponent', 'selector': 'lw-loader'},{'name': 'LoginComponent', 'selector': 'lw-login'},{'name': 'NachhilfeDiagComponent', 'selector': 'lw-nachhilfe-diag'},{'name': 'NachhilfeGComponent', 'selector': 'lw-nachhilfe-g'},{'name': 'NachhilfeNComponent', 'selector': 'lw-nachhilfe-n'},{'name': 'NachhilfeWComponent', 'selector': 'lw-nachhilfe-w'},{'name': 'RegisterComponent', 'selector': 'lw-register'},{'name': 'SettingsComponent', 'selector': 'lw-settings'}];
+    var DIRECTIVES = [{'name': 'CompareWithDirective', 'selector': '[lwCompareWith]'},{'name': 'EmailValidationDirective', 'selector': '[lwEmailValidation]'},{'name': 'KlasseValidationDirective', 'selector': '[lwKlasseValidation]'}];
+    var ACTUAL_COMPONENT = {'name': 'NachhilfeNComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'NachhilfeNComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

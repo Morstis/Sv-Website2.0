@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NachhilfeUser } from '../../i/nachhilfe-user';
 import { HttpClient } from '@angular/common/http';
-import { Observable, throwError, Subscription } from 'rxjs';
+import { Observable, throwError, Subscription, Subject } from 'rxjs';
 import {
   mergeMap,
   groupBy,
@@ -9,6 +9,7 @@ import {
   toArray,
   take,
   catchError,
+  skip,
 } from 'rxjs/operators';
 import { NachhilfeService } from '../../s/nachhilfe.service';
 import { AuthService } from 'src/app/modules/auth/s/auth.service';
@@ -30,7 +31,8 @@ export class NachhilfeGComponent implements OnInit, OnDestroy {
 
   /*  Ich verwende Template driven form anstatt reactive Forms, um die Buttonwahl der Fächer zu realisieren.
       ansonsten hatte ich die Fächerabfrage außerhalb der form realisieren müssen. Dadurch wäre die Validierung schwieriger geworden.
-  */
+      Und weil ich dumm bin.
+      */
 
   faecher$: Observable<string[]> = this.nachhilfeService.getFaecher();
   activeFaecher: string[] = [];
@@ -41,20 +43,45 @@ export class NachhilfeGComponent implements OnInit, OnDestroy {
 
   user$ = this.auth.user$;
   user: User;
-  sub: Subscription;
+  sub: Subscription = new Subscription();
+  new: boolean;
+  infoWow: string = null;
 
   ngOnInit() {
-    this.sub = this.user$.subscribe(
-      (user) => {
-        this.user = user;
-      },
-      (err) => {
-        new Message(this.snackbar).handleError(
-          err,
-          'Ein unerwarteter Fehler ist aufgetreten!'
-        );
-      }
+    this.sub.add(
+      this.user$.subscribe(
+        (user) => {
+          this.user = user;
+          if (this.user instanceof Object) {
+            this.nachhilfeService.keyExists(this.user.key).subscribe((x) => {
+              this.new = !x;
+
+              if (x) {
+                this.nachhilfeService
+                  .getOneByKey(this.user.key)
+                  .pipe(take(1))
+                  .subscribe((data) => {
+                    this.activeFaecher = data.faecher;
+                    this.infoWow = data.info || '';
+                  });
+              }
+            });
+          }
+        },
+        (err) => {
+          new Message(this.snackbar).handleError(
+            err,
+            'Ein unerwarteter Fehler ist aufgetreten!'
+          );
+        }
+      )
     );
+  }
+
+  del() {
+    this.nachhilfeService.deleteKey(this.user.key).then((x) => {
+      new Message(this.snackbar).success('Erfolgreich gelöscht');
+    });
   }
 
   save(formValue) {
@@ -65,7 +92,12 @@ export class NachhilfeGComponent implements OnInit, OnDestroy {
         jahrgang: { jg1: formValue.jg1.class, jg2: formValue.jg2.class },
         info: formValue.info,
       };
-      this.nachhilfeService.upload(nachhilfeSchueler);
+
+      if (this.new) {
+        this.nachhilfeService.createOneForKey(this.user.key, nachhilfeSchueler);
+      } else {
+        this.nachhilfeService.updateForKey(this.user.key, nachhilfeSchueler);
+      }
     } else {
       new Message(this.snackbar).handleError(
         new Error('nicht eingeloggt!'),

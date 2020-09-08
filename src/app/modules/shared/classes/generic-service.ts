@@ -60,6 +60,16 @@ export class GenericService<T> extends Message {
         )
       );
   }
+  public async deleteKey(key: string) {
+    try {
+      return this.dbRef.collection(this.endpoint.collRef).doc(key).delete();
+    } catch (err) {
+      return this.handleError(
+        err,
+        `Es ist ein unerwarteter Fehler beim Löschen des keys ${key} aufgetreten!`
+      );
+    }
+  }
 
   // Gets one entry
   public getOneByKey(key: string): Observable<T> {
@@ -71,9 +81,55 @@ export class GenericService<T> extends Message {
         catchError((err) =>
           this.handleError(
             err,
-            'Es ist ein unerwarteter Fehler beim eines Daten aufgetreten!'
+            'Es ist ein unerwarteter Fehler beim holen eines Dateneintrages aufgetreten!'
           )
         )
+      );
+  }
+  public createOneForKey(key: string, data: T) {
+    data = { ...data, creationDate: new Date() };
+
+    this.dbRef
+      .collection<T>(this.endpoint.collRef)
+      .doc(key)
+      .set(data)
+      .catch((err) =>
+        this.handleError(
+          err,
+          `Es ist ein unerwarteter Fehler beim Hochladen des keys ${key} aufgetreten!`
+        )
+      )
+      .then(() => {
+        this.success('Hochgeladen!');
+      });
+  }
+  public updateForKey(key: string, data: T) {
+    data = { ...data, updated: new Date() };
+
+    this.dbRef
+      .collection<T>(this.endpoint.collRef)
+      .doc(key)
+      .update(data)
+      .catch((err) =>
+        this.handleError(
+          err,
+          `Es ist ein unerwarteter Fehler beim updaten des keys ${key} aufgetreten!`
+        )
+      )
+      .then(() => {
+        this.success('Update ausgeführt!');
+      });
+  }
+
+  public keyExists(key: string) {
+    return this.dbRef
+      .collection(this.endpoint.collRef)
+      .doc(key)
+      .get()
+      .pipe(
+        map((x) => {
+          return x.exists;
+        })
       );
   }
 

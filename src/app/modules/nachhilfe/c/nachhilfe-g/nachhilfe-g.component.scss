@@ -38,9 +38,17 @@ form {
     display: inline-block;
     resize: none;
   }
-  button {
-    width: 40%;
-    align-self: flex-end;
+  div {
+    display: flex;
+    flex-direction: row-reverse;
+    button {
+      width: 40%;
+      align-self: flex-end;
+    }
+    #delete {
+      margin: auto 1rem auto auto;
+      background-color: red;
+    }
   }
 }
 

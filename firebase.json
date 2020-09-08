@@ -1,11 +1,7 @@
 {
   "hosting": {
     "public": "dist/Sv-Website",
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
-    ],
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "rewrites": [
       {
         "source": "**",
@@ -39,6 +35,12 @@
     },
     "hosting": {
       "port": 5000
+    },
+    "firestore": {
+      "port": 8080
+    },
+    "ui": {
+      "enabled": true
     }
   }
 }

@@ -10,7 +10,8 @@
     "e2e": "ng e2e",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "c": "ng g @ngx-storybook/schematics:component"
+    "c": "ng g @ngx-storybook/schematics:component",
+    "compodoc": "npx compodoc -p tsconfig.json -w -s"
   },
   "private": true,
   "dependencies": {
