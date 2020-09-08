@@ -1,3 +1,5 @@
+<lw-loader *ngIf="isLoading$ | async"></lw-loader>
+
 <div [ngClass]="{ animation: animation$ | async }">
   <mat-icon svgIcon="SvLogo" class="extremeLargeIcon"></mat-icon>
 
@@ -57,7 +59,6 @@
     >
       Abbrechen
     </button>
-    <a>Passwort vergessen</a>
     <a routerLink="/register">Registrieren</a>
   </form>
 </div>

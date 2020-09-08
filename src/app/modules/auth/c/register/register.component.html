@@ -125,7 +125,8 @@
 
     <mat-checkbox ngModel name="datenschutz" #datenschutz="ngModel" required
       ><span
-        >Ich habe die <a routerLink="/">Datenschutzerklärung</a> gelesen und
+        >Ich habe die
+        <a (click)="showDatenschutz()">Datenschutzerklärung</a> gelesen und
         akzeptiere diese hiermit.</span
       ></mat-checkbox
     >

@@ -8,6 +8,8 @@ import { AuthService } from '../../s/auth.service';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Message } from 'src/app/modules/shared/classes/message.class';
+import { LoaderComponent } from 'src/app/modules/shared/c/loader/loader.component';
+import { LoaderService } from 'src/app/modules/shared/s/loader.service';
 
 @Component({
   selector: 'lw-login',
@@ -17,11 +19,14 @@ import { Message } from 'src/app/modules/shared/classes/message.class';
 export class LoginComponent {
   animation$ = this.settingsService.animation();
 
+  isLoading$ = this.loaderService.state();
+
   constructor(
     private settingsService: SettingsService,
     private auth: AuthService,
     private router: Router,
-    private snackbar: MatSnackBar
+    private snackbar: MatSnackBar,
+    private loaderService: LoaderService
   ) {}
 
   @ViewChild('loginForm') loginForm: NgForm;

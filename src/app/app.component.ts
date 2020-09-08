@@ -10,6 +10,9 @@ import {
 } from '@angular/router';
 import { take, switchMap } from 'rxjs/operators';
 import { WillkommenService } from './modules/willkommen/willkommen.service';
+import { MatDialog } from '@angular/material/dialog';
+import { DatenschutzComponent } from './modules/auth/c/register/datenschutz/datenschutz.component';
+import { ImpressumComponent } from './modules/auth/c/register/impressum/impressum.component';
 
 @Component({
   selector: 'lw-root',
@@ -20,8 +23,29 @@ export class AppComponent implements OnInit {
   constructor(
     private settingsService: SettingsService,
     private router: Router,
-    private willkommen: WillkommenService
+    private willkommen: WillkommenService,
+    private dialog: MatDialog
   ) {}
+  privacy = false;
+
+  showDatenschutz() {
+    this.dialog.open(DatenschutzComponent, {
+      autoFocus: false,
+      closeOnNavigation: true,
+      restoreFocus: false,
+      width: '90%',
+      maxWidth: '50rem',
+    });
+  }
+  showImpressum() {
+    this.dialog.open(ImpressumComponent, {
+      autoFocus: false,
+      closeOnNavigation: true,
+      restoreFocus: false,
+      width: '90%',
+      maxWidth: '50rem',
+    });
+  }
   ngOnInit(): void {
     /**
     * Relink to /willkommen on enter and not on refresh 

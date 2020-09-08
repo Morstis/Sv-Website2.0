@@ -5,6 +5,8 @@ import { AdditionUserInfo } from 'src/app/modules/shared/i/user';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Message } from 'src/app/modules/shared/classes/message.class';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { DatenschutzComponent } from './datenschutz/datenschutz.component';
 
 @Component({
   selector: 'lw-register',
@@ -15,7 +17,8 @@ export class RegisterComponent implements OnInit {
   constructor(
     private auth: AuthService,
     private snackbar: MatSnackBar,
-    private router: Router
+    private router: Router,
+    private dialog: MatDialog
   ) {}
 
   @ViewChild('registerForm') registerForm: NgForm;
@@ -51,5 +54,15 @@ export class RegisterComponent implements OnInit {
           this.router.navigateByUrl('/login');
         }, 3000);
       });
+  }
+
+  showDatenschutz() {
+    this.dialog.open(DatenschutzComponent, {
+      autoFocus: false,
+      closeOnNavigation: true,
+      restoreFocus: false,
+      width: '90%',
+      maxWidth: '50rem',
+    });
   }
 }
