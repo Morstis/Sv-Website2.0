@@ -1,10 +1,21 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { willkommen } from './modules/willkommen/willkommen.route';
-import { appBody } from './modules/app-body/app-body.route';
-import { auth } from './modules/auth/auth.route';
+import { RouterModule, Routes } from '@angular/router';
 
-const routes: Routes = [willkommen, appBody, auth];
+import { willkommen } from './modules/willkommen/willkommen.route';
+
+const routes: Routes = [
+  {
+    path: 'auth',
+    loadChildren: () =>
+      import('./modules/auth/auth.module').then((m) => m.AuthModule),
+  },
+  {
+    path: '',
+    loadChildren: () =>
+      import('./modules/app-body/app-body.module').then((m) => m.AppBodyModule),
+  },
+  willkommen,
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

@@ -83,7 +83,7 @@ export class AuthService implements OnDestroy {
   async logout(): Promise<boolean> {
     try {
       await this.afAuth.signOut();
-      this.router.navigateByUrl('login');
+      this.router.navigateByUrl('/auth/login');
 
       return true;
     } catch (err) {

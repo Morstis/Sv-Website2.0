@@ -4,7 +4,6 @@ import { MaterialModule } from '../material/material.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { BasicRouterOutletComponent } from './c/basic-router-outlet/basic-router-outlet.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { GenericSnackbarComponent } from './c/generic-snackbar/generic-snackbar.component';
@@ -13,30 +12,26 @@ import { EmailValidationDirective } from './d/email-validation.directive';
 import { CompareWithDirective } from './d/compare-with.directive';
 import { LoaderComponent } from './c/loader/loader.component';
 import { LoaderInterceptor } from './interceptors/loader.interceptor';
+import { ImpressumComponent } from './c/impressum/impressum.component';
+import { DatenschutzComponent } from './c/datenschutz/datenschutz.component';
 
 @NgModule({
   declarations: [
-    BasicRouterOutletComponent,
     GenericSnackbarComponent,
     KlasseValidationDirective,
     EmailValidationDirective,
     CompareWithDirective,
     LoaderComponent,
+    ImpressumComponent,
+    DatenschutzComponent,
   ],
-  imports: [
-    CommonModule,
-    BrowserAnimationsModule,
-    AppRoutingModule,
-    MaterialModule,
-  ],
+  imports: [CommonModule, MaterialModule],
   exports: [
     CommonModule,
     ReactiveFormsModule,
     CompareWithDirective,
     MaterialModule,
     FormsModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
     HttpClientModule,
     GenericSnackbarComponent,
     KlasseValidationDirective,

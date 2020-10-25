@@ -6,7 +6,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Message } from 'src/app/modules/shared/classes/message.class';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
-import { DatenschutzComponent } from './datenschutz/datenschutz.component';
+import { DatenschutzComponent } from 'src/app/modules/shared/c/datenschutz/datenschutz.component';
 
 @Component({
   selector: 'lw-register',

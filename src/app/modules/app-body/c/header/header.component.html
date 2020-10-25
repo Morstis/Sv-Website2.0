@@ -14,7 +14,7 @@
       >{{ trigger.menuOpen ? "menu_open" : "menu" }}</mat-icon
     > -->
 
-    <span routerLink="/login" *ngIf="(user$ | async) === null" id="menu">
+    <span routerLink="/auth/login" *ngIf="(user$ | async) === null" id="menu">
       <mat-icon>perm_identity</mat-icon>
       Anmelden
     </span>

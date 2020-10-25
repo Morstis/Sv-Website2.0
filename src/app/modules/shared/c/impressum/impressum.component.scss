@@ -8,22 +8,15 @@ mat-card {
   box-shadow: none !important;
   padding: 0;
 
-  mat-card-header {
-    flex-grow: 0;
-    button {
-      margin: -1rem -1rem auto auto;
-    }
-  }
-
-  mat-card-title {
-    font-size: 2.2rem !important;
-  }
-
   .mediumButton:hover {
     color: red;
   }
 }
-
+button {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
 @media only screen and (max-width: 800px) {
   mat-card {
     width: 100%;

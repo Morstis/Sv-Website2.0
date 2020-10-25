@@ -1,12 +1,12 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { NachhilfeUser } from '../i/nachhilfe-user';
-import { Observable, throwError } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
-import { mergeMap, groupBy, map, toArray, catchError } from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Observable, throwError } from 'rxjs';
+import { catchError, groupBy, map, mergeMap, toArray } from 'rxjs/operators';
+
 import { GenericService } from '../../shared/classes/generic-service';
-import { Endpoint } from '../../shared/i/endpoint';
+import { NachhilfeUser } from '../i/nachhilfe-user';
 
 @Injectable({
   providedIn: 'root',

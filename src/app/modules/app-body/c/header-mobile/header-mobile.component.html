@@ -40,7 +40,7 @@
       <div>
         <a
           mat-list-item
-          [routerLink]="['/login']"
+          [routerLink]="['/auth/login']"
           routerLinkActive="router-link-active"
           *ngIf="(user$ | async) === null"
         >

@@ -1,16 +1,19 @@
 import { NgModule } from '@angular/core';
-import { HeaderModule } from './c/header/header.module';
-import { AppBodyModuleComponent } from './c/app-body/app-body.module';
-import { SettingsModule } from './c/settings/settings.module';
-import { HeaderMobileModule } from './c/header-mobile/header-mobile.module';
+import { HeaderComponent } from './c/header/header.component';
+import { HeaderMobileComponent } from './c/header-mobile/header-mobile.component';
+import { SettingsComponent } from './c/settings/settings.component';
+import { SharedModule } from '../shared/shared.module';
+import { AppBodyComponent } from './c/app-body/app-body.component';
+import { AppBodyRoutingModule } from './app-body-routing.module';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
-  declarations: [],
-  imports: [
-    HeaderModule,
-    AppBodyModuleComponent,
-    SettingsModule,
-    HeaderMobileModule,
+  declarations: [
+    HeaderComponent,
+    HeaderMobileComponent,
+    SettingsComponent,
+    AppBodyComponent,
   ],
+  imports: [CommonModule, SharedModule, AppBodyRoutingModule],
 })
 export class AppBodyModule {}

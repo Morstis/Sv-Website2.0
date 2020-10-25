@@ -11,8 +11,9 @@ import {
 import { take, switchMap } from 'rxjs/operators';
 import { WillkommenService } from './modules/willkommen/willkommen.service';
 import { MatDialog } from '@angular/material/dialog';
-import { DatenschutzComponent } from './modules/auth/c/register/datenschutz/datenschutz.component';
-import { ImpressumComponent } from './modules/auth/c/register/impressum/impressum.component';
+import { DatenschutzComponent } from './modules/shared/c/datenschutz/datenschutz.component';
+import { ImpressumComponent } from './modules/shared/c/impressum/impressum.component';
+import { AuthService } from './modules/auth/s/auth.service';
 
 @Component({
   selector: 'lw-root',
@@ -24,32 +25,18 @@ export class AppComponent implements OnInit {
     private settingsService: SettingsService,
     private router: Router,
     private willkommen: WillkommenService,
-    private dialog: MatDialog
-  ) {}
-  privacy = false;
+    private auth: AuthService
+  ) {
+    this.user$.subscribe();
+  }
+  animation$ = this.settingsService.animation();
+  mobileDesignSetting$ = this.settingsService.mobileDesign();
+  user$ = this.auth.user$;
 
-  showDatenschutz() {
-    this.dialog.open(DatenschutzComponent, {
-      autoFocus: false,
-      closeOnNavigation: true,
-      restoreFocus: false,
-      width: '90%',
-      maxWidth: '50rem',
-    });
-  }
-  showImpressum() {
-    this.dialog.open(ImpressumComponent, {
-      autoFocus: false,
-      closeOnNavigation: true,
-      restoreFocus: false,
-      width: '90%',
-      maxWidth: '50rem',
-    });
-  }
   ngOnInit(): void {
     /**
     * Relink to /willkommen on enter and not on refresh 
-      Alles andere ist einfach nur Spaghetti Code. Viel Spaß. Basicly speichert er den momentanen
+      Alles andere ist einfach nur Spaghetti Code. Viel Spaß. Basically speichert er den momentanen
       Route State und redirected dann zu ihm. (Die Logic dafür passiert natürlich in der Greetings
       component, da ich grade keine Lust habe das schön ztu machen)
     */
