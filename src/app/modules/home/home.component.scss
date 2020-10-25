@@ -1,0 +1,82 @@
+.container {
+  position: relative;
+  width: calc(100% + 3rem);
+  left: -2rem;
+  top: -1.5rem;
+
+  & > * {
+    width: 100%;
+  }
+  img {
+    position: fixed;
+    z-index: -1;
+    width: calc(100% + 5rem);
+    height: 100%;
+    object-fit: cover;
+  }
+  .content {
+    position: relative;
+
+    top: calc(100vh - 4rem);
+    display: grid;
+    gap: 10em;
+  }
+  mat-card {
+    position: relative;
+    font-size: 200%;
+    line-height: 160%;
+    word-wrap: break-word;
+    max-width: 80ch;
+    padding: 4em;
+    opacity: 0.98;
+    h1 {
+      line-height: 120%;
+    }
+  }
+
+  #nachhilfe {
+    display: grid;
+    grid:
+      "geben nehmen" 1fr
+      "extra extra" auto
+      / 1fr 1fr;
+    gap: 1rem;
+    #geben {
+      grid-area: geben;
+    }
+    #nehmen {
+      grid-area: nehmen;
+    }
+    #extra {
+      grid-area: extra;
+      width: 100% !important;
+      max-width: 100%;
+      text-align: center;
+      padding: 2em;
+    }
+  }
+}
+@media only screen and (max-width: 1200px) {
+  mat-card {
+    font-size: 150% !important;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  mat-card {
+    font-size: 120% !important;
+  }
+  #nachhilfe {
+    grid:
+      "geben geben" 1fr
+      "nehmen nehmen" 1fr
+      "extra extra" auto
+      / 1fr 1fr !important;
+  }
+}
+@media only screen and (max-width: 550px) {
+  mat-card {
+    font-size: 100% !important;
+    padding: 2em !important;
+  }
+}

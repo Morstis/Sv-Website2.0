@@ -13,12 +13,19 @@ const routes: Routes = [
 
       {
         path: 'nachhilfe',
-        ...canActivate(() => redirectUnauthorizedTo(['auth/login'])),
+        ...canActivate(() => redirectUnauthorizedTo(['/auth/login'])),
         loadChildren: () =>
           import('../../modules/nachhilfe/nachhilfe.module').then(
             (m) => m.NachhilfeModule
           ),
       },
+
+      {
+        path: 'home',
+        loadChildren: () =>
+          import('../../modules/home/home.module').then((m) => m.HomeModule),
+      },
+      { path: '', pathMatch: 'full', redirectTo: 'home' },
     ],
   },
 ];

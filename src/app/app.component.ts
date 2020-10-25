@@ -1,19 +1,9 @@
-import { Component, Inject, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Event, NavigationStart, Router } from '@angular/router';
+import { take } from 'rxjs/operators';
+
 import { SettingsService } from './modules/app-body/s/settings.service';
-import {
-  Router,
-  ActivatedRoute,
-  Event,
-  RouterEvent,
-  NavigationStart,
-  NavigationEnd,
-} from '@angular/router';
-import { take, switchMap } from 'rxjs/operators';
 import { WillkommenService } from './modules/willkommen/willkommen.service';
-import { MatDialog } from '@angular/material/dialog';
-import { DatenschutzComponent } from './modules/shared/c/datenschutz/datenschutz.component';
-import { ImpressumComponent } from './modules/shared/c/impressum/impressum.component';
-import { AuthService } from './modules/auth/s/auth.service';
 
 @Component({
   selector: 'lw-root',
@@ -24,14 +14,8 @@ export class AppComponent implements OnInit {
   constructor(
     private settingsService: SettingsService,
     private router: Router,
-    private willkommen: WillkommenService,
-    private auth: AuthService
-  ) {
-    this.user$.subscribe();
-  }
-  animation$ = this.settingsService.animation();
-  mobileDesignSetting$ = this.settingsService.mobileDesign();
-  user$ = this.auth.user$;
+    private willkommen: WillkommenService
+  ) {}
 
   ngOnInit(): void {
     /**
